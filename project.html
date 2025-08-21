@@ -81,6 +81,12 @@
 <!-- Full Image View Modal -->
 <div class="modal" id="imageModal">
   <span class="modal-close" id="closeModal">&times;</span>
+  <button class="modal-arrow modal-arrow-left" id="prevButton">
+    <i class="fas fa-chevron-left"></i>
+  </button>
+  <button class="modal-arrow modal-arrow-right" id="nextButton">
+    <i class="fas fa-chevron-right"></i>
+  </button>
   <div class="modal-content">
     <img src="" alt="" class="modal-image" id="modalImg">
     <div class="modal-caption">
@@ -89,8 +95,6 @@
     </div>
   </div>
 </div>
-
-
 
 <!-- CTA Section -->
 <div class="cta-section">
@@ -185,11 +189,11 @@ const imageData = {
     { title: "Custom Shelving System", desc: "Flexible storage solutions", img: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3" },
     { title: "Library Shelving", desc: "Floor-to-ceiling bookshelves", img: "https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?ixlib=rb-4.0.3" },
     { title: "Floating Shelves", desc: "Modern minimalist design", img: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3" },
-    { title: "Industrial Shelving", desc: "Durable and stylish", img: "https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?ixlib=rb-4.0.3" },
-    { title: "Corner Shelving Unit", desc: "Maximizes corner space", img: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3" },
+    { title: "Industrial Shelving", desc: "Durable and stylish", img: "極images.unsplash.com/photo-1595526114035-0d45ed16cfbf?ixlib=rb-4.0.3" },
+    { title: "Corner Shelving Unit", desc: "Maximizes corner space", img: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?極lib=rb-4.0.3" },
     { title: "Display Shelves", desc: "Showcase your collectibles", img: "https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?ixlib=rb-4.0.3" },
     { title: "Modular Shelving System", desc: "Customizable to your needs", img: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3" },
-    { title: "Office Shelving", desc: "Organized workspace", img: "https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?ixlib=rb-4.0.3" },
+    { title: "Office Shelving", desc: "Organized workspace", img: "https://images.unsplash.com/極-1595526114035-0d45ed16cfbf?ixlib=rb-4.0.3" },
     { title: "Garage Storage Shelves", desc: "Durable and functional", img: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3" },
     { title: "Children's Room Shelves", desc: "Fun and accessible", img: "https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?ixlib=rb-4.0.3" }
   ],
@@ -200,10 +204,10 @@ const imageData = {
     { title: "Built-in Storage Bench", desc: "Seating with storage", img: "https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?ixlib=rb-4.0.3" },
     { title: "Mudroom Storage", desc: "Organized entryway", img: "https://images.unsplash.com/photo-1615876234886-fd9a39fda104?ixlib=rb-4.0.3" },
     { title: "Laundry Room Storage", desc: "Efficient organization", img: "https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?ixlib=rb-4.0.3" },
-    { title: "Closet Storage System", desc: "Maximized organization", img: "https://images.unsplash.com/photo-1615876234886-fd9a39fda104?ixlib=rb-4.0.3" },
+    { title: "Closet Storage System", desc: "Maximized organization", img: "https://images.unsplash.com/photo-161587623488極-fd9a39fda104?ixlib=rb-4.0.3" },
     { title: "Pantry Organization", desc: "Efficient food storage", img: "https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?ixlib=rb-4.0.3" },
     { title: "Office Storage Solutions", desc: "Organized workspace", img: "https://images.unsplash.com/photo-1615876234886-fd9a39fda104?ixlib=rb-4.0.3" },
-    { title: "Toy Storage System", desc: "Keep play areas tidy", img: "https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?ixlib=rb-4.0.3" }
+    { title: "Toy Storage System", desc: "極eep play areas tidy", img: "https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?ixlib=rb-4.0.3" }
   ],
   vanity: [
     { title: "Modern Bathroom Vanity", desc: "Custom vanity with storage", img: "https://images.unsplash.com/photo-1600489000022-c2086d79f9d4?ixlib=rb-4.0.3" },
@@ -249,6 +253,7 @@ document.addEventListener('DOMContentLoaded', () => {
   galleryGrid.innerHTML = ''; // Remove loading spinner
   
   // Create gallery items for all categories
+  let allGalleryItems = [];
   for (const category in imageData) {
     imageData[category].forEach((item, index) => {
       const galleryItem = document.createElement('div');
@@ -264,6 +269,7 @@ document.addEventListener('DOMContentLoaded', () => {
       `;
       
       galleryGrid.appendChild(galleryItem);
+      allGalleryItems.push(galleryItem);
     });
   }
   
@@ -296,20 +302,83 @@ document.addEventListener('DOMContentLoaded', () => {
   const modalTitle = document.getElementById('modalTitle');
   const modalDesc = document.getElementById('modalDesc');
   const closeModal = document.getElementById('closeModal');
+  const prevButton = document.getElementById('prevButton');
+  const nextButton = document.getElementById('nextButton');
   
-  galleryItems.forEach(item => {
-    item.addEventListener('click', () => {
-      const imgSrc = item.querySelector('.gallery-image').src;
-      const title = item.querySelector('h3').textContent;
-      const desc = item.querySelector('p').textContent;
-      
-      modalImg.src = imgSrc;
-      modalTitle.textContent = title;
-      modalDesc.textContent = desc;
-      
-      modal.classList.add('active');
-      document.body.style.overflow = 'hidden';
+  let currentIndex = 0;
+  let visibleItems = [];
+  
+  // Function to update visible items based on current filter
+  function updateVisibleItems() {
+    const activeCategory = document.querySelector('.category-btn.active').dataset.category;
+    visibleItems = [];
+    
+    galleryItems.forEach((item, index) => {
+      if (activeCategory === 'all' || item.dataset.category === activeCategory) {
+        if (getComputedStyle(item).display !== 'none') {
+          visibleItems.push(index);
+        }
+      }
     });
+  }
+  
+  // Function to show image in modal
+  function showImageInModal(index) {
+    const item = galleryItems[index];
+    const imgSrc = item.querySelector('.gallery-image').src;
+    const title = item.querySelector('h3').textContent;
+    const desc = item.querySelector('p').textContent;
+    
+    modalImg.src = imgSrc;
+    modalTitle.textContent = title;
+    modalDesc.textContent = desc;
+    
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    
+    currentIndex = index;
+    
+    // Update arrow button visibility
+    updateArrowButtons();
+  }
+  
+  // Function to update arrow button visibility
+  function updateArrowButtons() {
+    if (visibleItems.length <= 1) {
+      prevButton.style.display = 'none';
+      nextButton.style.display = 'none';
+    } else {
+      prevButton.style.display = 'flex';
+      nextButton.style.display = 'flex';
+    }
+  }
+  
+  galleryItems.forEach((item, index) => {
+    item.addEventListener('click', () => {
+      updateVisibleItems();
+      const visibleIndex = visibleItems.indexOf(index);
+      if (visibleIndex !== -1) {
+        showImageInModal(visibleItems[visibleIndex]);
+      }
+    });
+  });
+  
+  // Previous button functionality
+  prevButton.addEventListener('click', (e) => {
+    e.stopPropagation();
+    updateVisibleItems();
+    const currentVisibleIndex = visibleItems.indexOf(currentIndex);
+    const prevIndex = currentVisibleIndex === 0 ? visibleItems.length - 1 : currentVisibleIndex - 1;
+    showImageInModal(visibleItems[prevIndex]);
+  });
+  
+  // Next button functionality
+  nextButton.addEventListener('click', (e) => {
+    e.stopPropagation();
+    updateVisibleItems();
+    const currentVisibleIndex = visibleItems.indexOf(currentIndex);
+    const nextIndex = currentVisibleIndex === visibleItems.length - 1 ? 0 : currentVisibleIndex + 1;
+    showImageInModal(visibleItems[nextIndex]);
   });
   
   closeModal.addEventListener('click', () => {
@@ -330,6 +399,15 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.key === 'Escape' && modal.classList.contains('active')) {
       modal.classList.remove('active');
       document.body.style.overflow = 'auto';
+    }
+    
+    // Keyboard navigation
+    if (modal.classList.contains('active')) {
+      if (e.key === 'ArrowLeft') {
+        prevButton.click();
+      } else if (e.key === 'ArrowRight') {
+        nextButton.click();
+      }
     }
   });
   
