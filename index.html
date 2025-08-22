@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./style/indexstyle.css">
+
 </head>
 <body>
 
@@ -23,10 +24,11 @@
   <nav class="nav-links">
     <ul>
       <li><a href="index.html">Home</a></li>
-      <li><a href="project.html" class="active">Project</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="contact.html">Contact</a></li>
-      <li><a href="https://www.facebook.com/kcclaminates"><i class="fab fa-facebook-f"></i></a></li>
+                <li><a href="project.html">Project</a></li>
+                     <li><a href="events.html">Events</a></li>
+                <li><a href="ourteam.html">Our Team</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
     </ul>
   </nav>
   
@@ -42,11 +44,12 @@
 <div class="mobile-nav" id="mobileNav">
   <span class="close-menu" id="closeMenu">&times;</span>
   <ul>
-    <li><a href="index.html">Home</a></li>
-    <li><a href="project.html" class="active">Project</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="contact.html">Contact</a></li>
-    <li><a href="https://www.facebook.com/kcclaminates"><i class="fab fa-facebook-f"></i> Facebook</a></li>
+   <li><a href="index.html">Home</a></li>
+                <li><a href="project.html">Project</a></li>
+                     <li><a href="events.html">Events</a></li>
+                <li><a href="ourteam.html">Our Team</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
   </ul>
 </div>
 
@@ -56,10 +59,27 @@
 <div class="projects-hero">
   <div class="hero-content">
     <h1>Your <span class="highlight">K</span>ey to <br><span class="highlight">C</span>ustom <span class="highlight">C</span>omfort</h1>
-    <p>Discover our premium furniture installations and custom storage solutions</p>
+    <p>Discover our premium furniture installations and custom storage solutions</p>   
     <a href="#projects" class="cta-button">Explore Our Work <i class="fas fa-arrow-down"></i></a>
   </div>
 </div>
+
+<!-- Video Section -->
+<section class="video-section">
+  <video class="background-video" autoplay muted loop>
+    <!-- Replace with your actual video file -->
+    <source src="./videos/Simple Design Woodworking.mp4 " type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  <div class="video-overlay"></div>
+  <div class="video-content animate-on-scroll">
+    <div class="play-icon">
+      <i class="fas fa-play-circle"></i>
+    </div>
+    <h2>Our Craftsmanship Journey</h2>
+    <p>For over a decade, KCC Furnitures has been transforming spaces with exceptional craftsmanship, attention to detail, and a passion for creating furniture that lasts generations.</p>
+  </div>
+</section>
 
 <!-- Category Navigation -->
 <section class="category-nav">
@@ -317,7 +337,7 @@
     }, 300);
   });
   
-  // NEW: Scroll animation for elements
+  // Scroll animation for elements
   function animateOnScroll() {
     const elements = document.querySelectorAll('.animate-on-scroll');
     
