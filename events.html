@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>KCC Furnitures and Hardwares - Events</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./style/eventsstyle.css">
+</head>
+<body>
+
+<!-- Header -->
+<div class="header">
+  <div class="logo">
+    <a href="index.html" title="Go to Homepage">
+      <img src="./images/KCC logo.png" alt="KCC Logo">
+    </a>
+  </div>
+
+  <nav class="nav-links">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="project.html">Project</a></li>
+      <li><a href="events.html" class="active">Events</a></li>
+      <li><a href="ourteam.html">Our Team</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+  
+  <!-- Hamburger Menu -->
+  <div class="hamburger" id="hamburger">
+    <div class="line1"></div>
+    <div class="line2"></div>
+    <div class="line3"></div>
+  </div>
+</div>
+
+<!-- Mobile Navigation -->
+<div class="mobile-nav" id="mobileNav">
+  <span class="close-menu" id="closeMenu">&times;</span>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="project.html">Project</a></li>
+    <li><a href="events.html" class="active">Events</a></li>
+    <li><a href="ourteam.html">Our Team</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</div>
+
+<div class="overlay" id="overlay"></div>
+
+<!-- Hero Section -->
+<div class="events-hero">
+  <div class="hero-content">
+    <h1>KCC <span class="highlight">E</span>vents</h1>
+    <p>Join us for workshops, exhibitions, and special events showcasing our craftsmanship</p>
+  </div>
+</div>
+
+<!-- Events Section -->
+<section class="events-section">
+  <div class="section-title">
+    <h2>Upcoming Events</h2>
+    <p>Discover our upcoming workshops, exhibitions, and special events</p>
+  </div>
+  
+  <div class="event-filters">
+    <button class="filter-btn active" data-filter="all">
+      <i class="fas fa-th-large"></i> All Events
+    </button>
+    <button class="filter-btn" data-filter="workshop">
+      <i class="fas fa-tools"></i> Workshops
+    </button>
+    <button class="filter-btn" data-filter="exhibition">
+      <i class="fas fa-paint-brush"></i> Exhibitions
+    </button>
+    <button class="filter-btn" data-filter="sale">
+      <i class="fas fa-tag"></i> Special Sales
+    </button>
+  </div>
+  
+  <div class="events-grid">
+    <!-- Event 1 -->
+    <div class="event-card" data-category="workshop">
+      <div class="event-image">
+        <img src="https://images.unsplash.com/photo-1581578021430-4d2ffa0f5b15?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Woodworking Workshop">
+        <div class="event-date">June 15, 2025</div>
+      </div>
+      <div class="event-info">
+        <span class="event-category">Workshop</span>
+        <h3>Basic Woodworking Techniques</h3>
+        <div class="event-details">
+          <span><i class="fas fa-clock"></i> 9:00 AM - 4:00 PM</span>
+          <span><i class="fas fa-map-marker-alt"></i> KCC Main Showroom</span>
+        </div>
+        <p>Learn fundamental woodworking skills from our master craftsmen. Perfect for beginners interested in furniture making.</p>
+        <a href="#" class="event-link">Register Now <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+    
+    <!-- Event 2 -->
+    <div class="event-card" data-category="exhibition">
+      <div class="event-image">
+        <img src="https://images.unsplash.com/photo-1493663284031-b7e3aaa4c4b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Modern Furniture Exhibition">
+        <div class="event-date">June 22-30, 2025</div>
+      </div>
+      <div class="event-info">
+        <span class="event-category">Exhibition</span>
+        <h3>Modern Furniture Collection</h3>
+        <div class="event-details">
+          <span><i class="fas fa-clock"></i> 10:00 AM - 8:00 PM</span>
+          <span><i class="fas fa-map-marker-alt"></i> KCC Gallery Space</span>
+        </div>
+        <p>Explore our latest collection of modern furniture designs, featuring innovative materials and sustainable practices.</p>
+        <a href="#" class="event-link">View Details <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+    
+    <!-- Event 3 -->
+    <div class="event-card" data-category="sale">
+      <div class="event-image">
+        <img src="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Annual Sale Event">
+        <div class="event-date">July 5-7, 2025</div>
+      </div>
+      <div class="event-info">
+        <span class="event-category">Special Sale</span>
+        <h3>Annual Summer Sale</h3>
+        <div class="event-details">
+          <span><i class="fas fa-clock"></i> 8:00 AM - 9:00 PM</span>
+          <span><i class="fas fa-map-marker-alt"></i> All KCC Locations</span>
+        </div>
+        <p>Don't miss our biggest sale of the year! Up to 40% off on selected furniture pieces and hardware items.</p>
+        <a href="#" class="event-link">Learn More <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+    
+    <!-- Event 4 -->
+    <div class="event-card" data-category="workshop">
+      <div class="event-image">
+        <img src="https://images.unsplash.com/photo-1594026112284-02bb6f3352fe?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Furniture Restoration Workshop">
+        <div class="event-date">July 12, 2025</div>
+      </div>
+      <div class="event-info">
+        <span class="event-category">Workshop</span>
+        <h3>Furniture Restoration Techniques</h3>
+        <div class="event-details">
+          <span><i class="fas fa-clock"></i> 1:00 PM - 5:00 PM</span>
+          <span><i class="fas fa-map-marker-alt"></i> KCC Workshop</span>
+        </div>
+        <p>Learn how to restore and refinish old furniture pieces to give them new life. Bring your own project or use ours.</p>
+        <a href="#" class="event-link">Register Now <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+    
+    <!-- Event 5 -->
+    <div class="event-card" data-category="exhibition">
+      <div class="event-image">
+        <img src="https://images.unsplash.com/photo-1616486029423-aaa4789e8c9a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Sustainable Design Exhibition">
+        <div class="event-date">July 20-27, 2025</div>
+      </div>
+      <div class="event-info">
+        <span class="event-category">Exhibition</span>
+        <h3>Sustainable Design Showcase</h3>
+        <div class="event-details">
+          <span><i class="fas fa-clock"></i> 10:00 AM - 7:00 PM</span>
+          <span><i class="fas fa-map-marker-alt"></i> KCC Eco Gallery</span>
+        </div>
+        <p>Discover furniture made from reclaimed materials and sustainable practices. Meet the artisans behind these eco-friendly creations.</p>
+        <a href="#" class="event-link">View Details <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+    
+    <!-- Event 6 -->
+    <div class="event-card" data-category="workshop">
+      <div class="event-image">
+        <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="DIY Home Projects Workshop">
+        <div class="event-date">August 3, 2025</div>
+      </div>
+      <div class="event-info">
+        <span class="event-category">Workshop</span>
+        <h3>DIY Home Projects</h3>
+        <div class="event-details">
+          <span><i class="fas fa-clock"></i> 10:00 AM - 3:00 PM</span>
+          <span><i class="fas fa-map-marker-alt"></i> KCC Creative Space</span>
+        </div>
+        <p>Learn simple DIY projects to enhance your home. From floating shelves to custom organizers, we'll guide you through each step.</p>
+        <a href="#" class="event-link">Register Now <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Newsletter Section -->
+<section class="newsletter-section">
+  <div class="newsletter-container">
+    <h2>Stay Updated</h2>
+    <p>Subscribe to our newsletter to receive updates about upcoming events, workshops, and exclusive offers.</p>
+    <form class="newsletter-form">
+      <input type="email" placeholder="Your email address" required>
+      <button type="submit">Subscribe</button>
+    </form>
+  </div>
+</section>
+
+<!-- Past Events Section -->
+<section class="past-events">
+  <div class="section-title">
+    <h2>Past Events</h2>
+    <p>Take a look at some of our previous successful events</p>
+  </div>
+  
+  <div class="past-events-grid">
+    <div class="past-event-card">
+      <div class="past-event-image">
+        <img src="https://images.unsplash.com/photo-1533090368676-1fd25485db88?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Spring Collection Launch">
+      </div>
+      <div class="past-event-info">
+        <h3>Spring Collection Launch</h3>
+        <p>May 10, 2025</p>
+        <p>Successful launch of our new spring furniture collection with over 200 attendees.</p>
+      </div>
+    </div>
+    
+    <div class="past-event-card">
+      <div class="past-event-image">
+        <img src="https://images.unsplash.com/photo-1519669556878-63bdad8a1a49?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Woodworking Masterclass">
+      </div>
+      <div class="past-event-info">
+        <h3>Woodworking Masterclass</h3>
+        <p>April 18, 2025</p>
+        <p>Advanced techniques workshop with master craftsman Robert Lim.</p>
+      </div>
+    </div>
+    
+    <div class="past-event-card">
+      <div class="past-event-image">
+        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Charity Auction">
+      </div>
+      <div class="past-event-info">
+        <h3>Charity Auction</h3>
+        <p>March 22, 2025</p>
+        <p>Raised over ₱100,000 for local community projects through our furniture auction.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<div class="cta-section">
+  <h2>Host Your Event With Us</h2>
+  <p>Interested in hosting a workshop or event at our space? Contact us to discuss possibilities.</p>
+  <a href="contact.html" class="cta-button">Contact Us</a>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <div class="footer-column">
+    <h3>KCC Furnitures</h3>
+    <a href="mailto:kkclaminates@gmail.com">kccfurnitures.com</a>
+    <a href="tel:09778899133">0977 889 9133</a>
+    <p>Benedicto St.,Poblacion West, Oton, Philippines</p>
+     <p>46A Scout Rallos Street, Laging Handa, Diliman, Quezon City, Philippines</p>
+  </div>
+  <div class="footer-column">
+    <h3>Sitemap</h3>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="project.html">Projects</a>
+    <a href="events.html">Events</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <div class="footer-column">
+    <h3>Working Hours</h3>
+    <p>Monday - Saturday: 8am - 5pm</p>
+    <p>Sunday: Closed</p>
+  </div>
+  <div class="footer-column">
+    <h3>Follow Us</h3>
+    <div class="social-icons">
+      <a href="https://www.facebook.com/kcclaminates"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-pinterest"></i></a>
+    </div>
+    <h3 style="margin-top: 20px;">Newsletter</h3>
+    <p>Subscribe for updates and offers</p>
+    <form style="margin-top: 10px;">
+      <input type="email" placeholder="Your email" style="padding: 10px; width: 100%; border: none; border-radius: 5px; margin-bottom: 10px;">
+      <button type="submit" style="background: #fff; color: #1ea840; border: none; padding: 10px 20px; border-radius: 30px; cursor: pointer; width: 100%;">Subscribe</button>
+    </form>
+  </div>
+</div>
+<div class="footer-bottom">
+  &copy; 2025 KCC Furnitures and Hardwares | Philippines
+</div>
+
+<script>
+  // Mobile Navigation Toggle
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobileNav');
+  const overlay = document.getElementById('overlay');
+  const closeMenu = document.getElementById('closeMenu');
+  
+  hamburger.addEventListener('click', () => {
+    mobileNav.classList.add('active');
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  });
+  
+  closeMenu.addEventListener('click', () => {
+    mobileNav.classList.remove('active');
+    overlay.classList.remove('active');
+    document.body.style.overflow = 'auto';
+  });
+  
+  overlay.addEventListener('click', () => {
+    mobileNav.classList.remove('active');
+    overlay.classList.remove('active');
+    document.body.style.overflow = 'auto';
+  });
+  
+  // Event Filtering
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const eventCards = document.querySelectorAll('.event-card');
+  
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      // Remove active class from all buttons
+      filterBtns.forEach(b => b.classList.remove('active'));
+      
+      // Add active class to clicked button
+      btn.classList.add('active');
+      
+      const filter = btn.dataset.filter;
+      
+      // Filter events
+      eventCards.forEach(card => {
+        if (filter === 'all' || card.dataset.category === filter) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+  
+  // Smooth scrolling for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        window.scrollTo({
+          top: target.offsetTop - 80,
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+  
+  // Header scroll effect
+  window.addEventListener('scroll', () => {
+    const header = document.querySelector('.header');
+    if (window.scrollY > 50) {
+      header.style.boxShadow = '0 5px 20px rgba(0,0,0,0.1)';
+    } else {
+      header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+    }
+  });
+  
+  // Animation for elements when they come into view
+  const animateOnScroll = () => {
+    const elements = document.querySelectorAll('.event-card, .newsletter-container, .past-event-card');
+    
+    elements.forEach(element => {
+      const elementPosition = element.getBoundingClientRect().top;
+      const screenPosition = window.innerHeight / 1.3;
+      
+      if (elementPosition < screenPosition) {
+        element.style.animationPlayState = 'running';
+      }
+    });
+  };
+  
+  window.addEventListener('scroll', animateOnScroll);
+  
+  // Initialize animations
+  window.addEventListener('load', () => {
+    // Trigger initial animations
+    animateOnScroll();
+    
+    // Add slight delay to hero animations for better effect
+    setTimeout(() => {
+      document.querySelector('.hero-content h1').style.animationPlayState = 'running';
+    }, 300);
+    
+    setTimeout(() => {
+      document.querySelector('.hero-content p').style.animationPlayState = 'running';
+    }, 600);
+    
+    // Animate section title
+    setTimeout(() => {
+      document.querySelector('.section-title').style.animationPlayState = 'running';
+    }, 900);
+  });
+</script>
+</body>
+</html>
