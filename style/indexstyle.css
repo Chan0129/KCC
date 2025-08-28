@@ -203,16 +203,17 @@ body {
   background: #1ea840;
 }
 
+/* Update the categories section for better responsiveness */
 .categories {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 15px;
+  gap: 10px;
   margin-bottom: 20px;
 }
 
 .category-btn {
-  padding: 12px 30px;
+  padding: 10px 20px;
   background: #f0faf3;
   border: none;
   border-radius: 30px;
@@ -220,20 +221,14 @@ body {
   color: #00581b;
   cursor: pointer;
   transition: all 0.3s ease;
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
+  white-space: nowrap;
 }
 
-.category-btn:hover, .category-btn.active {
-  background: #00581b;
-  color: #fff;
-}
 
-.category-btn i {
-  font-size: 1.2rem;
-}
 
 /* Projects Section */
 .projects-section {
@@ -824,3 +819,34 @@ body {
       opacity: 1;
     }
   }
+  /* For mobile view */
+@media (max-width: 768px) {
+  .categories {
+    gap: 8px;
+  }
+  
+  .category-btn {
+    padding: 8px 15px;
+    font-size: 0.8rem;
+  }
+  
+  .category-btn i {
+    font-size: 0.9rem;
+  }
+}
+
+/* For very small screens */
+@media (max-width: 480px) {
+  .categories {
+    gap: 5px;
+  }
+  
+  .category-btn {
+    padding: 6px 12px;
+    font-size: 0.75rem;
+  }
+  
+  .category-btn i {
+    display: none; /* Hide icons on very small screens to save space */
+  }
+}
