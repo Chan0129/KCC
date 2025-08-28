@@ -69,6 +69,9 @@
     <button class="category-btn animate-on-scroll" data-category="shelving">Shelving</button>
     <button class="category-btn animate-on-scroll" data-category="storage">Storage</button>
     <button class="category-btn animate-on-scroll" data-category="vanity">Vanity</button>
+    <button class="category-btn animate-on-scroll" data-category="hardwares">Hardwares</button>
+    <button class="category-btn animate-on-scroll" data-category="operable-walls">Operable Walls</button>
+    <button class="category-btn animate-on-scroll" data-category="acoustic-door">Acoustic Door</button>
   </div>
   
   <!-- Gallery Grid -->
@@ -151,75 +154,73 @@
 // Sample data for 10 images per category
 const imageData = {
   closets: [
-    { title: "Premium Walk-in Closet", desc: "Custom organizational solutions", img: "https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" },
-    { title: "Smart Closet System", desc: "Maximized storage solutions", img: "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" },
-    { title: "Modern Wardrobe Design", desc: "Sleek and functional", img: "https://images.unsplash.com/photo-1615529162924-f860538a3d0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" },
-    { title: "Organized Walk-in Closet", desc: "Perfect for small spaces", img: "https://images.unsplash.com/photo-1615876234886-fd9a39fda104?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" },
-    { title: "Luxury Master Closet", desc: "High-end materials", img: "https://images.unsplash.com/photo-1615529162924-f860538a3d0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" },
-    { title: "Custom Built-in Closet", desc: "Tailored to your space", img: "https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" },
-    { title: "Minimalist Closet Design", desc: "Clean lines and functionality", img: "https://images.unsplash.com/photo-1615876234886-fd9a39fda104?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" },
-    { title: "Walk-in Wardrobe", desc: "Custom organizational system", img: "极images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" },
-    { title: "Kids Room Closet", desc: "Fun and functional", img: "https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" },
-    { title: "Sliding Door Closet", desc: "Space-saving solution", img: "https://images.unsplash.com/photo-1615529162924-f860538a3d0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" }
+    
   ],
   entertainment: [
-    { title: "Media Wall Unit", desc: "Integrated entertainment center", img: "https://images.unsplash.com/photo-1616469829941-c7200edec809?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" },
-    { title: "Built-in Media Center", desc: "Entertainment wall unit", img: "https://images.unsplash.com/photo-1615529162924-f860538a3d0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" },
-    { title: "Modern TV Stand", desc: "Sleek design with storage", img: "https://images.unsplash.com/photo-1615876234886-fd极a39fda104?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" },
-    { title: "Wall-Mounted Entertainment", desc: "Space-saving solution", img: "https://images.unsplash.com/photo-1616469829941-c7200edec809?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" },
-    { title: "Custom Media Console", desc: "Perfect for your living room", img: "https://images.unsplash.com/photo-1615529162924-f860538a3d0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" },
-    { title: "Entertainment Wall Unit", desc: "Integrated storage solutions", img: "https://images.unsplash.com/photo-1615876234886-fd9a39fda104?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" },
-    { title: "Floating Media Shelf", desc: "Modern minimalist design", img: "https://images.unsplash.com/photo-1616469829941-c7200edec809?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" },
-    { title: "Corner Entertainment Unit", desc: "Maximizes corner space", img: "https://images.unsplash.com/photo-1615529162924-f860538a3d0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" },
-    { title: "Gaming Console Center", desc: "Designed for gamers", img: "https://images.unsplash.com/photo-1615876234886-fd9a39fda104?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" },
-    { title: "Home Theater Setup", desc: "Immersive entertainment", img: "https://images.unsplash.com/photo-1616469829941-c7200edec809?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" }
+ 
   ],
   kitchen: [
-    { title: "Minimalist Kitchen", desc: "Complete transformation", img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" },
-    { title: "Kitchen Pantry", desc: "Smart storage solutions", img: "https://images.unsplash.com/photo-1600489000022-c2086极79f9d4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" },
-    { title: "Contemporary Kitchen", desc: "Complete renovation", img: "https://images.unsplash.com/photo-1600566752355-35792bedcfea?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" },
-    { title: "Modern Kitchen Cabinets", desc: "Sleek and functional", img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" },
-    { title: "Kitchen Island Design", desc: "Extra workspace and storage", img: "https://images.unsplash.com/photo-1600489000022-c2086d79f9d4?ixlib=rb-4.0.3&auto=format&fit=c极op&w=800&q=80" },
-    { title: "Rustic Kitchen", desc: "Warm and inviting", img: "https://images.unsplash.com/极-1600566752355-35792bedcfea?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" },
-    { title: "Compact Kitchen Solution", desc: "Perfect for small spaces", img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" },
-    { title: "Luxury Kitchen", desc: "High-end materials", img: "https://images.unsplash.com/photo-1600489000022-c2086d79f9d4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" },
-    { title: "Farmhouse Kitchen", desc: "Classic design", img: "https://images.unsplash.com/photo-1600566752355-35792bedcfea?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" },
-    { title: "Smart Kitchen Storage", desc: "Organized and efficient", img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" }
+   
   ],
   shelving: [
-    { title: "Library Shelving", desc: "Floor-to-ceiling bookshelves", img: "https://i.postimg.cc/8cykYfRP/download.jpg" },
-    { title: "Floating Shelves", desc: "Modern minimalist design", img: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" },
-    { title: "Industrial Shelving", desc: "Durable and stylish", img: "https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" },
-    { title: "Corner Shelving Unit", desc: "Maximizes corner space", img: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" },
-    { title: "Display Shelves", desc: "Showcase your collectibles", img: "https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" },
-    { title: "Modular Shelving System", desc: "Customizable to your needs", img: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" },
-    { title: "Office Shelving", desc: "Organized workspace", img: "https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" },
-    { title: "Garage Storage Shelves", desc: "Durable and functional", img: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" },
-    { title: "Children's Room Shelves", desc: "Fun and accessible", img: "https://images.unsplash.com/photo-1595526114035-0d45ed极6cfbf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" }
+    { title: "Floating Shelves", desc: "Wall Mounted Shelving", img: "./images/shelving/shelve.jpg" },
+    { title: "Floating Shelves", desc: "Modern minimalist design", img: "./images/projects/shelving/shelving-2.jpg" },
+    { title: "Industrial Shelving", desc: "Durable and stylish", img: "./images/projects/shelving/shelving-3.jpg" },
+    { title: "Corner Shelving Unit", desc: "Maximizes corner space", img: "./images/projects/shelving/shelving-4.jpg" },
+    { title: "Display Shelves", desc: "Showcase your collectibles", img: "./images/projects/shelving/shelving-5.jpg" },
+    { title: "Modular Shelving System", desc: "Customizable to your needs", img: "./images/projects/shelving/shelving-6.jpg" },
+    { title: "Office Shelving", desc: "Organized workspace", img: "./images/projects/shelving/shelving-7.jpg" },
+    { title: "Garage Storage Shelves", desc: "Durable and functional", img: "./images/projects/shelving/shelving-8.jpg" },
+    { title: "Children's Room Shelves", desc: "Fun and accessible", img: "./images/projects/shelving/shelving-9.jpg" },
+    { title: "Custom Bookshelf", desc: "Tailored to your space", img: "./images/projects/shelving/shelving-10.jpg" }
   ],
   storage: [
-    { title: "Luxury Bathroom Storage", desc: "Premium vanity solutions", img: "https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" },
-    { title: "Under Stair Storage", desc: "Creative space utilization", img: "https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" },
-    { title: "Custom Garage Storage", desc: "Organize your tools", img: "https://images.unsplash.com/photo-1615876234886-fd9a39fda104?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" },
-    { title: "Built-in Storage Bench", desc: "Seating with storage", img: "https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" },
-    { title: "Mudroom Storage", desc: "Organized entryway", img: "https://images.unsplash.com/photo-1615876234886-fd9a39fda104?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" },
-    { title: "Laundry Room Storage", desc: "Efficient organization", img: "https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?ixlib=rb-4.0.3&auto=format&极it=crop&w=800&q=80" },
-    { title: "Closet Storage System", desc: "Maximized organization", img: "https://images.unsplash.com/photo-1615876234886-fd9a39fda104?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" },
-    { title: "Pantry Organization", desc: "Efficient food storage", img: "https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" },
-    { title: "Office Storage Solutions", desc: "Organized workspace", img: "https://images.unsplash.com/photo-1615876234886-fd9a39fda104?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" },
-    { title: "Toy Storage System", desc: "Keep play areas tidy", img: "https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" }
+    { title: "Luxury Bathroom Storage", desc: "Premium vanity solutions", img: "./images/storage/cabinet.jpg" },
+    { title: "Under Stair Storage", desc: "Creative space utilization", img: "./images/projects/storage/storage-2.jpg" },
+    { title: "Custom Garage Storage", desc: "Organize your tools", img: "./images/projects/storage/storage-3.jpg" },
+    { title: "Built-in Storage Bench", desc: "Seating with storage", img: "./images/projects/storage/storage-4.jpg" },
+    { title: "Mudroom Storage", desc: "Organized entryway", img: "./images/projects/storage/storage-5.jpg" },
+    { title: "Laundry Room Storage", desc: "Efficient organization", img: "./images/projects/storage/storage-6.jpg" },
+    { title: "Closet Storage System", desc: "Maximized organization", img: "./images/projects/storage/storage-7.jpg" },
+    { title: "Pantry Organization", desc: "Efficient food storage", img: "./images/projects/storage/storage-8.jpg" },
+    { title: "Office Storage Solutions", desc: "Organized workspace", img: "./images/projects/storage/storage-9.jpg" },
+    { title: "Toy Storage System", desc: "Keep play areas tidy", img: "./images/projects/storage/storage-10.jpg" }
   ],
   vanity: [
-    { title: "Modern Bathroom Vanity", desc: "Custom vanity with storage", img: "https://images.unsplash.com/photo-1600489000022-c2086d79f9d4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" },
-    { title: "Double Sink Vanity", desc: "Luxury master bathroom", img: "https://images.unsplash.com/photo-1600489000022-c2086d79f9d4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" },
-    { title: "Floating Bathroom Vanity", desc: "Modern minimalist design", img: "https://images.unsplash.com/photo-1615876234886-fd9a39fda104?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" },
-    { title: "Custom Vanity with Mirror", desc: "Complete bathroom solution", img: "https://images.unsplash.com/photo-1600489000022-c2086d79f9d4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" },
-    { title: "Rustic Bathroom Vanity", desc: "Warm and natural materials", img: "https://images.unsplash.com/photo-1615876234886-fd9a39fda104?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" },
-    { title: "Contemporary Vanity Design", desc: "Sleek and functional", img: "https://images.unsplash.com/photo-1600489000022-c2086d79f9d4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" },
-    { title: "Compact Bathroom Vanity", desc: "Perfect for small bathrooms", img: "https://images.unsplash.com/photo-1615876234886-fd9a39fda104?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" },
-    { title: "L极xury Master Vanity", desc: "High-end materials", img: "https://images.unsplash.com/photo-1600489000022-c2086d79f9d4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" },
-    { title: "Kids Bathroom Vanity", desc: "Fun and functional", img: "https://images.unsplash.com/photo-1615876234886-fd9a39fda104?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" },
-    { title: "Custom Vanity with Lighting", desc: "Perfect for makeup", img: "https://images.unsplash.com/photo-1600489000022-c2086d79f9d4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" }
+   
+  ],
+  hardwares: [
+    { title: "Ordinary Big Hinge", desc: "Durable and stylish hardware", img: "./images/hardwares/ordinary big hinge.jpg" },
+    { title: "Ordinary Hinge", desc: "Elegant entryway solutions", img: "./images/hardwares/ordinary hinge.jpg" },
+    { title: "Soft Close Full Overlay", desc: "Complete drawer hardware set", img: "./images/hardwares/soft close full overlay.jpg" },
+    { title: "Soft Close Half Overlay", desc: "Water-resistant hardware", img: "./images/hardwares/soft close half overlay.jpg" },
+    { title: "Soft Close Inset Hinge", desc: "Functional and decorative", img: "./images/hardwares/soft close inset hinge.jpg" },
+    { title: "Special Hinge", desc: "Smooth operation mechanisms", img: "./images/hardwares/special hinge.jpg" },
+
+  ],
+  "operable-walls": [
+    { title: "Modern Operable Wall", desc: "Flexible space division", img: "./images/operable-walls/operable-1.jpg" },
+    { title: "Acoustic Operable Wall", desc: "Soundproof partitioning", img: "./images/operable-walls/operable-2.jpg" },
+    { title: "Glass Operable Wall", desc: "Transparent space division", img: "./images/operable-walls/operable-3.jpg" },
+    { title: "Custom Operable Wall", desc: "Tailored to your space", img: "./images/operable-walls/operable-4.jpg" },
+    { title: "Office Partition Wall", desc: "Professional space management", img: "./images/operable-walls/operable-5.jpg" },
+    { title: "Retractable Wall System", desc: "Easy space reconfiguration", img: "./images/operable-walls/operable-6.jpg" },
+    { title: "Operable Wall with Doors", desc: "Integrated access points", img: "./images/operable-walls/operable-7.jpg" },
+    { title: "Panel Operable Wall", desc: "Modular wall system", img: "./images/operable-walls/operable-8.jpg" },
+    { title: "Commercial Operable Wall", desc: "Large venue solutions", img: "./images/operable-walls/operable-9.jpg" },
+    { title: "Residential Operable Wall", desc: "Home space optimization", img: "./images/operable-walls/operable-10.jpg" }
+  ],
+  "acoustic-door": [
+    { title: "Premium Acoustic Door", desc: "Maximum sound insulation", img: "./images/acoustic door/acoustic door.jpg" },
+    { title: "Studio Acoustic Door", desc: "Professional soundproofing", img: "./images/acoustic-door/acoustic-2.jpg" },
+    { title: "Double Acoustic Doors", desc: "Enhanced noise reduction", img: "./images/acoustic-door/acoustic-3.jpg" },
+    { title: "Fire-Rated Acoustic Door", desc: "Safety and sound control", img: "./images/acoustic-door/acoustic-4.jpg" },
+    { title: "Custom Acoustic Door", desc: "Tailored sound solutions", img: "./images/acoustic-door/acoustic-5.jpg" },
+    { title: "Glass Acoustic Door", desc: "Visibility with sound control", img: "./images/acoustic-door/acoustic-6.jpg" },
+    { title: "Office Acoustic Door", desc: "Professional environment", img: "./images/acoustic-door/acoustic-7.jpg" },
+    { title: "Residential Acoustic Door", desc: "Home tranquility", img: "./images/acoustic-door/acoustic-8.jpg" },
+    { title: "Industrial Acoustic Door", desc: "Heavy-duty soundproofing", img: "./images/acoustic-door/acoustic-9.jpg" },
+    { title: "Sliding Acoustic Door", desc: "Space-saving sound control", img: "./images/acoustic-door/acoustic-10.jpg" }
   ]
 };
 
@@ -396,7 +397,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // Close modal with Escape key
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modal.classList.contains('active')) {
+    if (e.key === 'Eescape' && modal.classList.contains('active')) {
       modal.classList.remove('active');
       document.body.style.overflow = 'auto';
     }
