@@ -9,6 +9,33 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 <style>
+:root {
+  --primary-color: #1ea840;
+  --primary-dark: #178533;
+  --text-color: #333;
+  --text-light: #666;
+  --bg-color: #fff;
+  --bg-secondary: #f8f9fa;
+  --border-color: #eaeaea;
+  --shadow: 0 5px 15px rgba(0,0,0,0.08);
+  --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --card-bg: #fff;
+  --header-bg: rgba(255, 255, 255, 0.95);
+}
+
+.night-mode {
+  --primary-color: #2ecc71;
+  --primary-dark: #27ae60;
+  --text-color: #f0f0f0;
+  --text-light: #b0b0b0;
+  --bg-color: #121212;
+  --bg-secondary: #1e1e1e;
+  --border-color: #333;
+  --shadow: 0 5px 15px rgba(0,0,0,0.3);
+  --card-bg: #1e1e1e;
+  --header-bg: rgba(30, 30, 30, 0.95);
+}
+
 /* Base Styles */
 * {
   margin: 0;
@@ -19,8 +46,10 @@
 body {
   font-family: 'Montserrat', sans-serif;
   line-height: 1.6;
-  color: #333;
+  color: var(--text-color);
+  background-color: var(--bg-color);
   overflow-x: hidden;
+  transition: var(--transition);
 }
 
 /* Header Styles */
@@ -29,14 +58,15 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  background: #fff;
+  background: var(--header-bg);
   padding: 15px 5%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   box-shadow: 0 2px 10px rgba(0,0,0,0.1);
   z-index: 1000;
-  transition: all 0.3s ease;
+  transition: var(--transition);
+  backdrop-filter: blur(10px);
 }
 
 .logo img {
@@ -59,11 +89,11 @@ body {
 
 .nav-links a {
   text-decoration: none;
-  color: #333;
+  color: var(--text-color);
   font-weight: 500;
   position: relative;
   padding: 5px 0;
-  transition: color 0.3s ease;
+  transition: var(--transition);
 }
 
 .nav-links a:after {
@@ -73,8 +103,8 @@ body {
   left: 0;
   width: 0;
   height: 2px;
-  background: #1ea840;
-  transition: width 0.3s ease;
+  background: var(--primary-color);
+  transition: var(--transition);
 }
 
 .nav-links a:hover:after,
@@ -84,7 +114,23 @@ body {
 
 .nav-links a:hover,
 .nav-links a.active {
-  color: #1ea840;
+  color: var(--primary-color);
+}
+
+/* Theme Toggle */
+.theme-toggle {
+  background: none;
+  border: none;
+  color: var(--text-color);
+  font-size: 1.2rem;
+  cursor: pointer;
+  margin-left: 1rem;
+  transition: var(--transition);
+}
+
+.theme-toggle:hover {
+  color: var(--primary-color);
+  transform: rotate(30deg);
 }
 
 /* Hamburger Menu */
@@ -100,10 +146,10 @@ body {
 .hamburger div {
   height: 3px;
   width: 100%;
-  background: #333;
+  background: var(--text-color);
   border-radius: 3px;
   position: absolute;
-  transition: all 0.3s ease;
+  transition: var(--transition);
 }
 
 .hamburger .line1 {
@@ -138,11 +184,11 @@ body {
   width: 80%;
   max-width: 300px;
   height: 100vh;
-  background: #fff;
+  background: var(--bg-color);
   z-index: 1001;
   padding: 80px 30px 30px;
   box-shadow: -5px 0 15px rgba(0,0,0,0.1);
-  transition: right 0.4s ease;
+  transition: var(--transition);
 }
 
 .mobile-nav.active {
@@ -159,18 +205,18 @@ body {
 
 .mobile-nav a {
   text-decoration: none;
-  color: #333;
+  color: var(--text-color);
   font-size: 18px;
   font-weight: 500;
   display: block;
   padding: 10px 0;
-  border-bottom: 1px solid #eee;
-  transition: color 0.3s ease, padding-left 0.3s ease;
+  border-bottom: 1px solid var(--border-color);
+  transition: var(--transition);
 }
 
 .mobile-nav a:hover,
 .mobile-nav a.active {
-  color: #1ea840;
+  color: var(--primary-color);
   padding-left: 10px;
 }
 
@@ -180,11 +226,11 @@ body {
   right: 20px;
   font-size: 30px;
   cursor: pointer;
-  transition: color 0.3s ease, transform 0.3s ease;
+  transition: var(--transition);
 }
 
 .close-menu:hover {
-  color: #1ea840;
+  color: var(--primary-color);
   transform: scale(1.1);
 }
 
@@ -198,7 +244,7 @@ body {
   z-index: 999;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
+  transition: var(--transition);
 }
 
 .overlay.active {
@@ -209,7 +255,7 @@ body {
 /* Showcase Section */
 .showcase-section {
   padding: 120px 5% 80px;
-  background: #f9f9f9;
+  background: var(--bg-secondary);
 }
 
 .showcase-header {
@@ -221,19 +267,19 @@ body {
 .showcase-header h1 {
   font-size: 2.5rem;
   margin-bottom: 20px;
-  color: #222;
+  color: var(--text-color);
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+  transition: var(--transition);
 }
 
 .showcase-header p {
   font-size: 1.1rem;
-  color: #666;
+  color: var(--text-light);
   line-height: 1.8;
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 0.8s ease 0.2s, transform 0.8s ease 0.2s;
+  transition: var(--transition);
 }
 
 .showcase-header h1.animated,
@@ -253,14 +299,16 @@ body {
 
 .category-btn {
   padding: 10px 20px;
-  background: #fff;
-  border: 2px solid #ddd;
+  background: var(--card-bg);
+  border: 2px solid var(--border-color);
   border-radius: 30px;
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: var(--transition);
   opacity: 0;
   transform: translateY(20px);
+  color: var(--text-color);
+  box-shadow: var(--shadow);
 }
 
 .category-btn.animated {
@@ -269,13 +317,14 @@ body {
 }
 
 .category-btn:hover {
-  border-color: #1ea840;
-  color: #1ea840;
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+  transform: translateY(-3px);
 }
 
 .category-btn.active {
-  background: #1ea840;
-  border-color: #1ea840;
+  background: var(--primary-color);
+  border-color: var(--primary-color);
   color: #fff;
 }
 
@@ -290,11 +339,12 @@ body {
   position: relative;
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  box-shadow: var(--shadow);
   cursor: pointer;
   opacity: 0;
   transform: translateY(30px) scale(0.95);
-  transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s ease;
+  transition: var(--transition);
+  background: var(--card-bg);
 }
 
 .gallery-item.animated {
@@ -311,7 +361,7 @@ body {
   width: 100%;
   height: 250px;
   object-fit: cover;
-  transition: transform 0.5s ease;
+  transition: var(--transition);
 }
 
 .gallery-item:hover .gallery-image {
@@ -327,7 +377,7 @@ body {
   background: linear-gradient(transparent, rgba(0,0,0,0.7));
   color: #fff;
   transform: translateY(100%);
-  transition: transform 0.4s ease;
+  transition: var(--transition);
 }
 
 .gallery-item:hover .gallery-caption {
@@ -358,7 +408,7 @@ body {
   height: 50px;
   border: 5px solid rgba(30, 168, 64, 0.2);
   border-radius: 50%;
-  border-top-color: #1ea840;
+  border-top-color: var(--primary-color);
   animation: spin 1s linear infinite;
 }
 
@@ -381,7 +431,7 @@ body {
   align-items: center;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.4s ease, visibility 0.4s ease;
+  transition: var(--transition);
 }
 
 .modal.active {
@@ -428,11 +478,11 @@ body {
   color: #fff;
   cursor: pointer;
   z-index: 1101;
-  transition: color 0.3s ease, transform 0.3s ease;
+  transition: var(--transition);
 }
 
 .modal-close:hover {
-  color: #1ea840;
+  color: var(--primary-color);
   transform: scale(1.1);
 }
 
@@ -452,7 +502,7 @@ body {
   align-items: center;
   cursor: pointer;
   z-index: 1101;
-  transition: background 0.3s ease, transform 0.3s ease;
+  transition: var(--transition);
 }
 
 .modal-arrow:hover {
@@ -470,13 +520,13 @@ body {
 
 /* CTA Section */
 .cta-section {
-  background: #1ea840;
+  background: var(--primary-color);
   color: #fff;
   text-align: center;
   padding: 80px 5%;
   opacity: 0;
   transform: translateY(50px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+  transition: var(--transition);
 }
 
 .cta-section.animated {
@@ -500,32 +550,35 @@ body {
 .cta-button {
   display: inline-block;
   background: #fff;
-  color: #1ea840;
+  color: var(--primary-color);
   padding: 15px 40px;
   border-radius: 30px;
   text-decoration: none;
   font-weight: 600;
   font-size: 1.1rem;
-  transition: all 0.3s ease;
+  transition: var(--transition);
   box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  border: 2px solid transparent;
 }
 
 .cta-button:hover {
   transform: translateY(-3px);
   box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  background: rgba(255,255,255,0.9);
+  border-color: var(--primary-color);
 }
 
 /* Footer */
 .footer {
-  background: #222;
-  color: #fff;
+  background: var(--bg-secondary);
+  color: var(--text-color);
   padding: 60px 5% 30px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 40px;
   opacity: 0;
   transform: translateY(50px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+  transition: var(--transition);
 }
 
 .footer.animated {
@@ -536,19 +589,19 @@ body {
 .footer-column h3 {
   font-size: 1.3rem;
   margin-bottom: 20px;
-  color: #1ea840;
+  color: var(--primary-color);
 }
 
 .footer-column a, .footer-column p {
   display: block;
-  color: #bbb;
+  color: var(--text-light);
   margin-bottom: 10px;
   text-decoration: none;
-  transition: color 0.3s ease;
+  transition: var(--transition);
 }
 
 .footer-column a:hover {
-  color: #1ea840;
+  color: var(--primary-color);
 }
 
 .social-icons {
@@ -563,13 +616,14 @@ body {
   align-items: center;
   width: 40px;
   height: 40px;
-  background: #333;
+  background: var(--primary-color);
+  color: white;
   border-radius: 50%;
-  transition: all 0.3s ease;
+  transition: var(--transition);
 }
 
 .social-icons a:hover {
-  background: #1ea840;
+  background: var(--primary-dark);
   transform: translateY(-3px);
 }
 
@@ -580,11 +634,18 @@ body {
   border-radius: 5px;
   margin-bottom: 10px;
   font-family: 'Montserrat', sans-serif;
+  background: var(--bg-color);
+  color: var(--text-color);
+  transition: var(--transition);
+}
+
+.footer-column input:focus {
+  outline: 2px solid var(--primary-color);
 }
 
 .footer-column button {
-  background: #fff;
-  color: #1ea840;
+  background: var(--primary-color);
+  color: white;
   border: none;
   padding: 12px 20px;
   border-radius: 30px;
@@ -592,19 +653,32 @@ body {
   width: 100%;
   font-weight: 600;
   font-family: 'Montserrat', sans-serif;
-  transition: all 0.3s ease;
+  transition: var(--transition);
 }
 
 .footer-column button:hover {
-  background: #1ea840;
-  color: #fff;
+  background: var(--primary-dark);
+  transform: translateY(-3px);
 }
 
 .footer-bottom {
-  background: #111;
-  color: #bbb;
+  background: var(--bg-color);
+  color: var(--text-light);
   text-align: center;
   padding: 20px 5%;
+  border-top: 1px solid var(--border-color);
+}
+
+/* Animation Classes */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: var(--transition);
+}
+
+.animate-on-scroll.animated {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* Responsive Design */
@@ -691,14 +765,19 @@ body {
 
   <nav class="nav-links">
     <ul>
-    <li><a href="index.html">Home</a></li>
-                <li><a href="project.html">Project</a></li>
-                <li><a href="events.html">Events</a></li>
-                <li><a href="ourteam.html">Our Team</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html" class="active">Contact</a></li>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="project.html" class="active">Project</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="ourteam.html">Our Team</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
     </ul>
   </nav>
+  
+  <!-- Theme Toggle -->
+  <button class="theme-toggle" id="themeToggle">
+    <i class="fas fa-moon"></i>
+  </button>
   
   <!-- Hamburger Menu -->
   <div class="hamburger" id="hamburger">
@@ -712,12 +791,12 @@ body {
 <div class="mobile-nav" id="mobileNav">
   <span class="close-menu" id="closeMenu">&times;</span>
   <ul>
-      <li><a href="index.html">Home</a></li>
-                <li><a href="project.html">Project</a></li>
-                <li><a href="events.html">Events</a></li>
-                <li><a href="ourteam.html">Our Team</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html" class="active">Contact</a></li>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="project.html" class="active">Project</a></li>
+    <li><a href="events.html">Events</a></li>
+    <li><a href="ourteam.html">Our Team</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
   </ul>
 </div>
 
@@ -820,16 +899,68 @@ body {
 </div>
 
 <script>
+// Night Mode Toggle
+const themeToggle = document.getElementById('themeToggle');
+const body = document.body;
+
+// Check for saved theme preference or respect OS preference
+const savedTheme = localStorage.getItem('theme') || 
+                  (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'night' : 'light');
+
+if (savedTheme === 'night') {
+  body.classList.add('night-mode');
+  themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+}
+
+themeToggle.addEventListener('click', () => {
+  body.classList.toggle('night-mode');
+  
+  if (body.classList.contains('night-mode')) {
+    localStorage.setItem('theme', 'night');
+    themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+  } else {
+    localStorage.setItem('theme', 'light');
+    themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+  }
+});
+
 // Sample data for 10 images per category
 const imageData = {
   closets: [
-    
+    { title: "Walk-in Closet", desc: "Custom closet organization system", img: "./images/closets/closet-1.jpg" },
+    { title: "Reach-in Closet", desc: "Space-efficient closet solution", img: "./images/closets/closet-2.jpg" },
+    { title: "Built-in Wardrobe", desc: "Seamless integration with room", img: "./images/closets/closet-3.jpg" },
+    { title: "Custom Closet System", desc: "Personalized storage solution", img: "./images/closets/closet-4.jpg" },
+    { title: "Walk-in Closet with Island", desc: "Luxury closet design", img: "./images/closets/closet-5.jpg" },
+    { title: "Corner Closet", desc: "Maximizes corner space", img: "./images/closets/closet-6.jpg" },
+    { title: "Kids Closet", desc: "Fun and functional design", img: "./images/closets/closet-7.jpg" },
+    { title: "Master Bedroom Closet", desc: "Spacious and organized", img: "./images/closets/closet-8.jpg" },
+    { title: "Sliding Door Closet", desc: "Space-saving solution", img: "./images/closets/closet-9.jpg" },
+    { title: "Custom Closet with Lighting", desc: "Enhanced visibility and style", img: "./images/closets/closet-10.jpg" }
   ],
   entertainment: [
- 
+    { title: "Wall-mounted TV Unit", desc: "Sleek entertainment center", img: "./images/entertainment/entertainment-1.jpg" },
+    { title: "Built-in Entertainment Wall", desc: "Complete media solution", img: "./images/entertainment/entertainment-2.jpg" },
+    { title: "Floating Media Console", desc: "Modern minimalist design", img: "./images/entertainment/entertainment-3.jpg" },
+    { title: "Corner Entertainment Unit", desc: "Space-efficient design", img: "./images/entertainment/entertainment-4.jpg" },
+    { title: "Custom Media Wall", desc: "Integrated storage and display", img: "./images/entertainment/entertainment-5.jpg" },
+    { title: "Entertainment Center with Fireplace", desc: "Cozy media space", img: "./images/entertainment/entertainment-6.jpg" },
+    { title: "Gaming Station", desc: "Dedicated gaming setup", img: "./images/entertainment/entertainment-7.jpg" },
+    { title: "Home Theater Cabinetry", desc: "Professional cinema experience", img: "./images/entertainment/entertainment-8.jpg" },
+    { title: "Multi-media Console", desc: "Versatile entertainment hub", img: "./images/entertainment/entertainment-9.jpg" },
+    { title: "Entertainment Wall with Bookshelves", desc: "Combined media and library", img: "./images/entertainment/entertainment-10.jpg" }
   ],
   kitchen: [
-   { title: " Wall Mounted Kitchen Cabinet", desc: "Site: Panaderia De Iloilo", img: "./images/kitchen/Panaderia.jpg" },
+    { title: "Wall Mounted Kitchen Cabinet", desc: "Site: Panaderia De Iloilo", img: "./images/kitchen/Panaderia.jpg" },
+    { title: "Modern Kitchen Cabinets", desc: "Sleek and functional design", img: "./images/kitchen/kitchen-2.jpg" },
+    { title: "Custom Kitchen Island", desc: "Additional prep space", img: "./images/kitchen/kitchen-3.jpg" },
+    { title: "Pantry Organization", desc: "Efficient food storage", img: "./images/kitchen/kitchen-4.jpg" },
+    { title: "Pull-out Cabinet Systems", desc: "Easy access storage", img: "./images/kitchen/kitchen-5.jpg" },
+    { title: "Corner Cabinet Solutions", desc: "Maximizes corner space", img: "./images/kitchen/kitchen-6.jpg" },
+    { title: "Spice Rack Integration", desc: "Organized cooking essentials", img: "./images/kitchen/kitchen-7.jpg" },
+    { title: "Custom Drawer Systems", desc: "Tailored kitchen organization", img: "./images/kitchen/kitchen-8.jpg" },
+    { title: "Wine Storage Cabinet", desc: "Elegant wine display", img: "./images/kitchen/kitchen-9.jpg" },
+    { title: "Kitchen Cabinet with Lighting", desc: "Enhanced workspace visibility", img: "./images/kitchen/kitchen-10.jpg" }
   ],
   shelving: [
     { title: "Floating Shelves", desc: "Wall Mounted Shelving", img: "./images/shelving/shelve.jpg" },
@@ -856,7 +987,16 @@ const imageData = {
     { title: "Toy Storage System", desc: "Keep play areas tidy", img: "./images/projects/storage/storage-10.jpg" }
   ],
   vanity: [
-   
+    { title: "Double Vanity Unit", desc: "Spacious bathroom storage", img: "./images/vanity/vanity-1.jpg" },
+    { title: "Floating Bathroom Vanity", desc: "Modern minimalist design", img: "./images/vanity/vanity-2.jpg" },
+    { title: "Custom Vanity with Storage", desc: "Tailored bathroom solution", img: "./images/vanity/vanity-3.jpg" },
+    { title: "Wall-mounted Vanity", desc: "Space-saving design", img: "./images/vanity/vanity-4.jpg" },
+    { title: "Vanity with Integrated Sink", desc: "Seamless bathroom design", img: "./images/vanity/vanity-5.jpg" },
+    { title: "Corner Vanity Unit", desc: "Maximizes corner space", img: "./images/vanity/vanity-6.jpg" },
+    { title: "Vanity with Mirror Cabinet", desc: "Complete bathroom storage", img: "./images/vanity/vanity-7.jpg" },
+    { title: "Custom Vanity with Lighting", desc: "Enhanced bathroom illumination", img: "./images/vanity/vanity-8.jpg" },
+    { title: "Vanity with Drawer Organization", desc: "Efficient storage solution", img: "./images/vanity/vanity-9.jpg" },
+    { title: "Luxury Bathroom Vanity", desc: "Premium bathroom design", img: "./images/vanity/vanity-10.jpg" }
   ],
   hardwares: [
     { title: "Ordinary Big Hinge", desc: "Durable and stylish hardware", img: "./images/hardwares/ordinary big hinge.jpg" },
@@ -865,7 +1005,10 @@ const imageData = {
     { title: "Soft Close Half Overlay", desc: "Water-resistant hardware", img: "./images/hardwares/soft close half overlay.jpg" },
     { title: "Soft Close Inset Hinge", desc: "Functional and decorative", img: "./images/hardwares/soft close inset hinge.jpg" },
     { title: "Special Hinge", desc: "Smooth operation mechanisms", img: "./images/hardwares/special hinge.jpg" },
-
+    { title: "Cabinet Handles", desc: "Elegant finishing touches", img: "./images/hardwares/hardware-7.jpg" },
+    { title: "Drawer Slides", desc: "Smooth drawer operation", img: "./images/hardwares/hardware-8.jpg" },
+    { title: "Door Knobs", desc: "Stylish entry solutions", img: "./images/hardwares/hardware-9.jpg" },
+    { title: "Custom Hardware Set", desc: "Complete hardware package", img: "./images/hardwares/hardware-10.jpg" }
   ],
   "operable-walls": [
     { title: "Modern Operable Wall", desc: "Flexible space division", img: "./images/operable walls/operable wall-1.jpg" },

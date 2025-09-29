@@ -6,7 +6,672 @@
     <title>About Us - KCC Furnitures and Hardwares</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./style/aboutstyle.css">
+    <style>
+        :root {
+            --primary-color: #1ea840;
+            --primary-dark: #178533;
+            --text-color: #333;
+            --text-light: #666;
+            --bg-color: #fff;
+            --bg-secondary: #f8f9fa;
+            --border-color: #eaeaea;
+            --shadow: 0 5px 15px rgba(0,0,0,0.08);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            --card-bg: #fff;
+            --header-bg: rgba(255, 255, 255, 0.95);
+        }
+
+        .night-mode {
+            --primary-color: #2ecc71;
+            --primary-dark: #27ae60;
+            --text-color: #f0f0f0;
+            --text-light: #b0b0b0;
+            --bg-color: #121212;
+            --bg-secondary: #1e1e1e;
+            --border-color: #333;
+            --shadow: 0 5px 15px rgba(0,0,0,0.3);
+            --card-bg: #1e1e1e;
+            --header-bg: rgba(30, 30, 30, 0.95);
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            overflow-x: hidden;
+            transition: var(--transition);
+        }
+
+        /* Header Styles */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: var(--header-bg);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo img {
+            height: 50px;
+            transition: var(--transition);
+        }
+
+        .logo:hover img {
+            transform: scale(1.05);
+        }
+
+        .nav-links ul {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin: 0 15px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            position: relative;
+            padding: 5px 0;
+            transition: var(--transition);
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover:after,
+        .nav-links a.active:after {
+            width: 100%;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary-color);
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin-left: 1rem;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            color: var(--primary-color);
+            transform: rotate(30deg);
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            width: 30px;
+            height: 21px;
+            position: relative;
+        }
+
+        .hamburger div {
+            height: 3px;
+            width: 100%;
+            background: var(--text-color);
+            border-radius: 3px;
+            position: absolute;
+            transition: var(--transition);
+        }
+
+        .hamburger .line1 {
+            top: 0;
+        }
+
+        .hamburger .line2 {
+            top: 9px;
+        }
+
+        .hamburger .line3 {
+            top: 18px;
+        }
+
+        .hamburger.active .line1 {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.active .line2 {
+            opacity: 0;
+        }
+
+        .hamburger.active .line3 {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        /* Mobile Navigation */
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            max-width: 300px;
+            height: 100vh;
+            background: var(--bg-color);
+            z-index: 1001;
+            padding: 80px 30px 30px;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            transition: var(--transition);
+        }
+
+        .mobile-nav.active {
+            right: 0;
+        }
+
+        .mobile-nav ul {
+            list-style: none;
+        }
+
+        .mobile-nav li {
+            margin-bottom: 20px;
+        }
+
+        .mobile-nav a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-size: 18px;
+            font-weight: 500;
+            display: block;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        .mobile-nav a:hover,
+        .mobile-nav a.active {
+            color: var(--primary-color);
+            padding-left: 10px;
+        }
+
+        .close-menu {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .close-menu:hover {
+            color: var(--primary-color);
+            transform: scale(1.1);
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Hero Section */
+        .about-hero {
+            height: 60vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 0 5%;
+            margin-top: 70px;
+        }
+
+        .about-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 1s ease-out forwards;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+        }
+
+        .about-hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 1s ease-out 0.3s forwards;
+        }
+
+        /* About Content Section */
+        .about-section {
+            padding: 5rem 5%;
+            background: var(--bg-secondary);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto 4rem;
+            align-items: center;
+        }
+
+        .about-text {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: var(--transition);
+        }
+
+        .about-text.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .about-text h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .about-text p {
+            margin-bottom: 2rem;
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        .about-image {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: var(--transition);
+        }
+
+        .about-image.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .about-image:hover img {
+            transform: scale(1.02);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: var(--transition);
+        }
+
+        .section-title.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .gallery-btn {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        .gallery-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+            border-color: white;
+        }
+
+        /* Philosophy Section */
+        .philosophy {
+            padding: 5rem 5%;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            text-align: center;
+        }
+
+        .philosophy-content {
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: var(--transition);
+        }
+
+        .philosophy-content.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .philosophy h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .philosophy p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        /* Process Section */
+        .process {
+            padding: 5rem 5%;
+            background: var(--bg-color);
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .process-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .process-card.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .process-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .process-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            transition: var(--transition);
+        }
+
+        .process-card:hover .process-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .process-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .process-card p {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 5rem 5%;
+            background: var(--bg-secondary);
+            text-align: center;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: var(--transition);
+        }
+
+        .cta.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .cta h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            color: var(--text-light);
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border: 2px solid transparent;
+        }
+
+        .cta-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            border-color: white;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--bg-secondary);
+            color: var(--text-color);
+            padding: 60px 5% 30px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: var(--transition);
+        }
+
+        .footer.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .footer-column a, .footer-column p {
+            display: block;
+            color: var(--text-light);
+            margin-bottom: 10px;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-column a:hover {
+            color: var(--primary-color);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .social-icons a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .social-icons a:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            background: var(--bg-color);
+            color: var(--text-light);
+            text-align: center;
+            padding: 20px 5%;
+            border-top: 1px solid var(--border-color);
+        }
+
+        /* Animation Classes */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: var(--transition);
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Keyframes */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hamburger {
+                display: flex;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .about-hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .about-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .process-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .social-icons {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .about-section {
+                padding: 3rem 5%;
+            }
+            
+            .about-hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .cta h2 {
+                font-size: 1.8rem;
+            }
+            
+            .process-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Header -->
@@ -19,14 +684,19 @@
 
         <nav class="nav-links">
             <ul>
-                 <li><a href="index.html">Home</a></li>
+                <li><a href="index.html">Home</a></li>
                 <li><a href="project.html">Project</a></li>
                 <li><a href="events.html">Events</a></li>
                 <li><a href="ourteam.html">Our Team</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html" class="active">Contact</a></li>
+                <li><a href="about.html" class="active">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
+        
+        <!-- Theme Toggle -->
+        <button class="theme-toggle" id="themeToggle">
+            <i class="fas fa-moon"></i>
+        </button>
         
         <!-- Hamburger Menu -->
         <div class="hamburger" id="hamburger">
@@ -40,12 +710,12 @@
     <div class="mobile-nav" id="mobileNav">
         <span class="close-menu" id="closeMenu">&times;</span>
         <ul>
-   <li><a href="index.html">Home</a></li>
-                <li><a href="project.html">Project</a></li>
-                <li><a href="events.html">Events</a></li>
-                <li><a href="ourteam.html">Our Team</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html" class="active">Contact</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="project.html">Project</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="ourteam.html">Our Team</a></li>
+            <li><a href="about.html" class="active">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
         </ul>
     </div>
     
@@ -60,7 +730,7 @@
     <!-- About Content Section -->
     <div class="about-section">
         <div class="about-content">
-            <div class="about-text">
+            <div class="about-text animate-on-scroll">
                 <h3>KCC: Lifestyle</h3>
                 <p>We believe in a unified and simple approach to solving space problems which makes working with KCC a much easier process than most. Focusing on the requirements first, then using our extensive knowledge of cabinet and shelving systems to take care of how it looks.</p>
                 
@@ -71,24 +741,24 @@
                 <p>Once we've mapped out a solution that satisfies the storage demands, we draw on our extensive knowledge of cabinet systems as well as our partner network to make sure the look and feel blend seamlessly with the environment.</p>
             </div>
             
-            <div class="about-image">
+            <div class="about-image animate-on-scroll">
                 <img src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="KCC Modular Cabinets">
             </div>
         </div>
         
-        <div class="section-title">
+        <div class="section-title animate-on-scroll">
             <h2>Modern cabinet solutions</h2>
         </div>
         
         <div style="text-align: center; max-width: 800px; margin: 0 auto;">
-            <p style="font-size: 1.1rem; margin-bottom: 30px;">Contact KCC right away to get detailed quotes and an immediate consultation. Don't wait any longer, solve your space issues in style.</p>
+            <p style="font-size: 1.1rem; margin-bottom: 30px; color: var(--text-light);">Contact KCC right away to get detailed quotes and an immediate consultation. Don't wait any longer, solve your space issues in style.</p>
             <a href="contact.html" class="gallery-btn">Let's Chat</a>
         </div>
     </div>
 
     <!-- Philosophy Section -->
     <div class="philosophy">
-        <div class="philosophy-content">
+        <div class="philosophy-content animate-on-scroll">
             <h2>OUR PHILOSOPHY</h2>
             <p>Exceptional work with high standards</p>
             <p>We hold ourselves accountable to maintaining a professional working standard that is fair to our clients, which is why K been a leading choice for many satisfied customers and continues to grow its client base.</p>
@@ -98,12 +768,12 @@
 
     <!-- Process Section -->
     <div class="process">
-        <div class="section-title">
+        <div class="section-title animate-on-scroll">
             <h2>Our Process</h2>
         </div>
         
         <div class="process-grid">
-            <div class="process-card">
+            <div class="process-card animate-on-scroll">
                 <div class="process-icon">
                     <i class="fas fa-comments"></i>
                 </div>
@@ -111,7 +781,7 @@
                 <p>Our consultants will draft and propose a customized storage solution based on your preferences and space requirements.</p>
             </div>
             
-            <div class="process-card">
+            <div class="process-card animate-on-scroll">
                 <div class="process-icon">
                     <i class="fas fa-ruler-combined"></i>
                 </div>
@@ -119,7 +789,7 @@
                 <p>After drafting, our professional team will measure and install your cabinets into the space and make the required adjustments for a perfect fit.</p>
             </div>
             
-            <div class="process-card">
+            <div class="process-card animate-on-scroll">
                 <div class="process-icon">
                     <i class="fas fa-headset"></i>
                 </div>
@@ -127,7 +797,7 @@
                 <p>Our specialists are on standby to provide you with support anytime. From providing quotes to addressing any questions or concerns.</p>
             </div>
             
-            <div class="process-card">
+            <div class="process-card animate-on-scroll">
                 <div class="process-icon">
                     <i class="fas fa-tools"></i>
                 </div>
@@ -138,14 +808,14 @@
     </div>
 
     <!-- CTA Section -->
-    <div class="cta">
+    <div class="cta animate-on-scroll">
         <h2>Ready to Transform Your Space?</h2>
         <p>Contact us today for a free consultation and quote. Our design experts are ready to help you create the perfect storage solutions for your home or office.</p>
         <a href="contact.html" class="cta-btn">Get Started Now</a>
     </div>
 
     <!-- Footer -->
-    <div class="footer">
+    <div class="footer animate-on-scroll">
         <div class="footer-column">
             <h3>KCC Furnitures</h3>
             <a href="mailto:kkclaminates@gmail.com">kccfurnitures.com</a>
@@ -162,10 +832,10 @@
             <a href="PrivacyPolicy.html">Privacy Policy</a>
         </div>
         <div class="footer-column">
-    <h3>Working Hours</h3>
-    <p>Monday - Saturday: 8am - 5pm</p>
-        <p>Sunday: Closed</p>
-  </div>
+            <h3>Working Hours</h3>
+            <p>Monday - Saturday: 8am - 5pm</p>
+            <p>Sunday: Closed</p>
+        </div>
         <div class="footer-column">
             <h3>Follow Us</h3>
             <div class="social-icons">
@@ -181,6 +851,31 @@
     </div>
 
     <script>
+        // Night Mode Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        
+        // Check for saved theme preference or respect OS preference
+        const savedTheme = localStorage.getItem('theme') || 
+                          (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'night' : 'light');
+        
+        if (savedTheme === 'night') {
+            body.classList.add('night-mode');
+            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('night-mode');
+            
+            if (body.classList.contains('night-mode')) {
+                localStorage.setItem('theme', 'night');
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            } else {
+                localStorage.setItem('theme', 'light');
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+            }
+        });
+        
         // Mobile Navigation Toggle
         const hamburger = document.getElementById('hamburger');
         const mobileNav = document.getElementById('mobileNav');
@@ -217,14 +912,14 @@
         
         // Animation for elements when they come into view
         const animateOnScroll = () => {
-            const elements = document.querySelectorAll('.about-text, .about-image, .process-card, .philosophy-content p');
+            const elements = document.querySelectorAll('.animate-on-scroll');
             
             elements.forEach(element => {
                 const elementPosition = element.getBoundingClientRect().top;
                 const screenPosition = window.innerHeight / 1.3;
                 
                 if (elementPosition < screenPosition) {
-                    element.style.animationPlayState = 'running';
+                    element.classList.add('animated');
                 }
             });
         };
