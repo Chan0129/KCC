@@ -76,6 +76,13 @@
             transform: scale(1.05);
         }
 
+        /* Navigation Styles - Right Aligned */
+        .nav-links {
+            flex-grow: 1;
+            display: flex;
+            justify-content: flex-end;
+        }
+
         .nav-links ul {
             display: flex;
             list-style: none;
@@ -115,20 +122,30 @@
             color: var(--primary-color);
         }
 
-        /* Theme Toggle */
+        /* Night Mode Toggle - Lower Right Corner */
         .theme-toggle {
-            background: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            color: white;
             border: none;
-            color: var(--text-color);
-            font-size: 1.2rem;
             cursor: pointer;
-            margin-left: 1rem;
-            transition: var(--transition);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
         }
 
         .theme-toggle:hover {
-            color: var(--primary-color);
-            transform: rotate(30deg);
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+            background-color: var(--primary-dark);
         }
 
         /* Hamburger Menu */
@@ -707,6 +724,13 @@
             .footer-column form {
                 justify-content: center;
             }
+            
+            .theme-toggle {
+                width: 45px;
+                height: 45px;
+                bottom: 15px;
+                right: 15px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -748,11 +772,6 @@
             </ul>
         </nav>
         
-        <!-- Theme Toggle -->
-        <button class="theme-toggle" id="themeToggle">
-            <i class="fas fa-moon"></i>
-        </button>
-        
         <!-- Hamburger Menu -->
         <div class="hamburger" id="hamburger">
             <div class="line1"></div>
@@ -760,6 +779,11 @@
             <div class="line3"></div>
         </div>
     </div>
+
+    <!-- Night Mode Toggle - Lower Right Corner -->
+    <button class="theme-toggle" id="themeToggle">
+        <i class="fas fa-moon"></i>
+    </button>
 
     <!-- Mobile Navigation -->
     <div class="mobile-nav" id="mobileNav">
@@ -887,11 +911,13 @@
         </div>
         <div class="footer-column">
             <h3>Sitemap</h3>
-            <a href="index.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="project.html">Projects</a>
-            <a href="contact.html">Contact</a>
-            <a href="PrivacyPolicy.html">Privacy Policy</a>
+          <a href="index.html">Home</a>
+        <a href="project.html">Projects</a>
+        <a href="events.html">Events</a>
+        <a href="ourteam.html">Our team</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="PrivacyPolicy.html">Privacy Policy</a>
         </div>
         <div class="footer-column">
             <h3>Working Hours</h3>

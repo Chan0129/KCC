@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Event Details - KCC Furnitures and Hardwares</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary-color: #1ea840;
+  --primary-dark: #178533;
+  --text-color: #333;
+  --text-light: #666;
+  --bg-color: #fff;
+  --bg-secondary: #f8f9fa;
+  --border-color: #eaeaea;
+  --shadow: 0 5px 15px rgba(0,0,0,0.08);
+  --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --card-bg: #fff;
+  --header-bg: rgba(255, 255, 255, 0.95);
+}
+
+.night-mode {
+  --primary-color: #2ecc71;
+  --primary-dark: #27ae60;
+  --text-color: #f0f0f0;
+  --text-light: #b0b0b0;
+  --bg-color: #121212;
+  --bg-secondary: #1e1e1e;
+  --border-color: #333;
+  --shadow: 0 5px 15px rgba(0,0,0,0.3);
+  --card-bg: #1e1e1e;
+  --header-bg: rgba(30, 30, 30, 0.95);
+}
+
+/* Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  line-height: 1.6;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  overflow-x: hidden;
+  transition: var(--transition);
+}
+
+/* Header Styles */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: var(--header-bg);
+  padding: 15px 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  z-index: 1000;
+  transition: var(--transition);
+  backdrop-filter: blur(10px);
+}
+
+.logo img {
+  height: 50px;
+  transition: var(--transition);
+}
+
+.logo:hover img {
+  transform: scale(1.05);
+}
+
+.nav-links ul {
+  display: flex;
+  list-style: none;
+}
+
+.nav-links li {
+  margin: 0 15px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 500;
+  position: relative;
+  padding: 5px 0;
+  transition: var(--transition);
+}
+
+.nav-links a:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--primary-color);
+  transition: var(--transition);
+}
+
+.nav-links a:hover:after,
+.nav-links a.active:after {
+  width: 100%;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--primary-color);
+}
+
+/* Theme Toggle */
+.theme-toggle {
+  background: none;
+  border: none;
+  color: var(--text-color);
+  font-size: 1.2rem;
+  cursor: pointer;
+  margin-left: 1rem;
+  transition: var(--transition);
+}
+
+.theme-toggle:hover {
+  color: var(--primary-color);
+  transform: rotate(30deg);
+}
+
+/* Hamburger Menu */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  width: 30px;
+  height: 21px;
+  position: relative;
+}
+
+.hamburger div {
+  height: 3px;
+  width: 100%;
+  background: var(--text-color);
+  border-radius: 3px;
+  position: absolute;
+  transition: var(--transition);
+}
+
+.hamburger .line1 {
+  top: 0;
+}
+
+.hamburger .line2 {
+  top: 9px;
+}
+
+.hamburger .line3 {
+  top: 18px;
+}
+
+.hamburger.active .line1 {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active .line2 {
+  opacity: 0;
+}
+
+.hamburger.active .line3 {
+  transform: rotate(-45deg) translate(7px, -6px);
+}
+
+/* Mobile Navigation */
+.mobile-nav {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 80%;
+  max-width: 300px;
+  height: 100vh;
+  background: var(--bg-color);
+  z-index: 1001;
+  padding: 80px 30px 30px;
+  box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+  transition: var(--transition);
+}
+
+.mobile-nav.active {
+  right: 0;
+}
+
+.mobile-nav ul {
+  list-style: none;
+}
+
+.mobile-nav li {
+  margin-bottom: 20px;
+}
+
+.mobile-nav a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-size: 18px;
+  font-weight: 500;
+  display: block;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border-color);
+  transition: var(--transition);
+}
+
+.mobile-nav a:hover,
+.mobile-nav a.active {
+  color: var(--primary-color);
+  padding-left: 10px;
+}
+
+.close-menu {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 30px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.close-menu:hover {
+  color: var(--primary-color);
+  transform: scale(1.1);
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition);
+}
+
+.overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Event Details Hero */
+.event-details-hero {
+  height: 60vh;
+  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1581578021430-4d2ffa0f5b15?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  padding: 0 5%;
+  margin-top: 70px;
+}
+
+.hero-content h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 1s ease-out forwards;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 1s ease-out 0.3s forwards;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.event-meta {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1.5rem;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 1s ease-out 0.6s forwards;
+}
+
+.event-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.1rem;
+}
+
+/* Event Details Section */
+.event-details-section {
+  padding: 5rem 5%;
+  background: var(--bg-secondary);
+}
+
+.event-details-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 3rem;
+}
+
+.event-content {
+  background: var(--card-bg);
+  border-radius: 10px;
+  padding: 2.5rem;
+  box-shadow: var(--shadow);
+  opacity: 0;
+  transform: translateY(30px);
+  transition: var(--transition);
+}
+
+.event-content.animated {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.event-content h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: var(--primary-color);
+}
+
+.event-content p {
+  color: var(--text-light);
+  margin-bottom: 1.5rem;
+  line-height: 1.8;
+}
+
+.event-highlights {
+  margin: 2rem 0;
+}
+
+.event-highlights h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+}
+
+.event-highlights ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.event-highlights li {
+  padding: 0.5rem 0;
+  color: var(--text-light);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.event-highlights li:before {
+  content: '✓';
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+/* Registration Form */
+.registration-sidebar {
+  background: var(--card-bg);
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: var(--shadow);
+  height: fit-content;
+  position: sticky;
+  top: 100px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: var(--transition);
+}
+
+.registration-sidebar.animated {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.registration-sidebar h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--primary-color);
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+.form-control {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  background: var(--bg-color);
+  color: var(--text-color);
+  transition: var(--transition);
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(30, 168, 64, 0.2);
+}
+
+.submit-btn {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 30px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  width: 100%;
+}
+
+.submit-btn:hover {
+  background: var(--primary-dark);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* Thank You Page */
+.thank-you-section {
+  padding: 5rem 5%;
+  background: var(--bg-secondary);
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.thank-you-container {
+  max-width: 600px;
+  background: var(--card-bg);
+  border-radius: 10px;
+  padding: 3rem;
+  box-shadow: var(--shadow);
+  opacity: 0;
+  transform: translateY(30px);
+  transition: var(--transition);
+}
+
+.thank-you-container.animated {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.thank-you-icon {
+  font-size: 4rem;
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+}
+
+.thank-you-container h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+}
+
+.thank-you-container p {
+  color: var(--text-light);
+  margin-bottom: 2rem;
+  line-height: 1.8;
+}
+
+.thank-you-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.cta-button {
+  display: inline-block;
+  background: var(--primary-color);
+  color: white;
+  padding: 12px 30px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: var(--transition);
+  border: 2px solid transparent;
+}
+
+.cta-button:hover {
+  background: var(--primary-dark);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  border-color: white;
+}
+
+.cta-button.secondary {
+  background: transparent;
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+}
+
+.cta-button.secondary:hover {
+  background: var(--primary-color);
+  color: white;
+}
+
+/* Footer */
+.footer {
+  background: var(--bg-secondary);
+  color: var(--text-color);
+  padding: 60px 5% 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: var(--transition);
+}
+
+.footer.animated {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.footer-column h3 {
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+  color: var(--primary-color);
+}
+
+.footer-column a, .footer-column p {
+  display: block;
+  color: var(--text-light);
+  margin-bottom: 10px;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.footer-column a:hover {
+  color: var(--primary-color);
+}
+
+.social-icons {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.social-icons a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background: var(--primary-color);
+  color: white;
+  border-radius: 50%;
+  transition: var(--transition);
+}
+
+.social-icons a:hover {
+  background: var(--primary-dark);
+  transform: translateY(-3px);
+}
+
+.footer-column input {
+  padding: 12px;
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  font-family: 'Montserrat', sans-serif;
+  background: var(--bg-color);
+  color: var(--text-color);
+  transition: var(--transition);
+}
+
+.footer-column input:focus {
+  outline: 2px solid var(--primary-color);
+}
+
+.footer-column button {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 30px;
+  cursor: pointer;
+  width: 100%;
+  font-weight: 600;
+  font-family: 'Montserrat', sans-serif;
+  transition: var(--transition);
+}
+
+.footer-column button:hover {
+  background: var(--primary-dark);
+  transform: translateY(-3px);
+}
+
+.footer-bottom {
+  background: var(--bg-color);
+  color: var(--text-light);
+  text-align: center;
+  padding: 20px 5%;
+  border-top: 1px solid var(--border-color);
+}
+
+/* Animation Classes */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: var(--transition);
+}
+
+.animate-on-scroll.animated {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Keyframes */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .nav-links {
+    display: none;
+  }
+  
+  .hamburger {
+    display: flex;
+  }
+  
+  .event-details-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .registration-sidebar {
+    position: static;
+  }
+  
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+  
+  .event-meta {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .thank-you-actions {
+    flex-direction: column;
+  }
+  
+  .footer {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  
+  .social-icons {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .event-details-section {
+    padding: 3rem 5%;
+  }
+  
+  .hero-content h1 {
+    font-size: 1.8rem;
+  }
+  
+  .event-content {
+    padding: 1.5rem;
+  }
+  
+  .thank-you-container {
+    padding: 2rem;
+  }
+  
+  .thank-you-container h1 {
+    font-size: 2rem;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="header">
+  <div class="logo">
+    <a href="index.html" title="Go to Homepage">
+      <img src="./images/KCC logo.png" alt="KCC Logo">
+    </a>
+  </div>
+
+  <nav class="nav-links">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="project.html">Project</a></li>
+      <li><a href="events.html" class="active">Events</a></li>
+      <li><a href="ourteam.html">Our Team</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+  
+  <!-- Theme Toggle -->
+  <button class="theme-toggle" id="themeToggle">
+    <i class="fas fa-moon"></i>
+  </button>
+  
+  <!-- Hamburger Menu -->
+  <div class="hamburger" id="hamburger">
+    <div class="line1"></div>
+    <div class="line2"></div>
+    <div class="line3"></div>
+  </div>
+</div>
+
+<!-- Mobile Navigation -->
+<div class="mobile-nav" id="mobileNav">
+  <span class="close-menu" id="closeMenu">&times;</span>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="project.html">Project</a></li>
+    <li><a href="events.html" class="active">Events</a></li>
+    <li><a href="ourteam.html">Our Team</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</div>
+
+<div class="overlay" id="overlay"></div>
+
+<!-- Event Details Hero -->
+<div class="event-details-hero">
+  <div class="hero-content">
+    <h1>Basic Woodworking Techniques</h1>
+    <p>Learn fundamental woodworking skills from our master craftsmen. Perfect for beginners interested in furniture making.</p>
+    <div class="event-meta">
+      <div class="event-meta-item">
+        <i class="fas fa-calendar-alt"></i>
+        <span>June 15, 2025</span>
+      </div>
+      <div class="event-meta-item">
+        <i class="fas fa-clock"></i>
+        <span>9:00 AM - 4:00 PM</span>
+      </div>
+      <div class="event-meta-item">
+        <i class="fas fa-map-marker-alt"></i>
+        <span>KCC Main Showroom</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Event Details Section -->
+<section class="event-details-section">
+  <div class="event-details-container">
+    <div class="event-content animate-on-scroll">
+      <h2>About This Workshop</h2>
+      <p>Join us for a comprehensive woodworking workshop designed for beginners who want to learn the fundamentals of furniture making. Our master craftsmen will guide you through essential techniques, safety practices, and creative approaches to woodworking.</p>
+      
+      <p>This hands-on workshop will cover everything from selecting the right wood to finishing techniques that bring out the natural beauty of your creations. Whether you're looking to start a new hobby or enhance your DIY skills, this workshop provides the perfect foundation.</p>
+      
+      <div class="event-highlights">
+        <h3>What You'll Learn</h3>
+        <ul>
+          <li>Understanding different types of wood and their properties</li>
+          <li>Essential woodworking tools and their proper usage</li>
+          <li>Basic joinery techniques for strong, durable furniture</li>
+          <li>Safety protocols in the workshop</li>
+          <li>Sanding and finishing techniques for professional results</li>
+          <li>Design principles for functional and beautiful furniture</li>
+        </ul>
+      </div>
+      
+      <div class="event-highlights">
+        <h3>What's Included</h3>
+        <ul>
+          <li>All necessary materials and tools</li>
+          <li>Expert instruction from master craftsmen</li>
+          <li>Take-home project (small wooden stool)</li>
+          <li>Workshop manual with techniques and tips</li>
+          <li>Certificate of completion</li>
+          <li>Light refreshments and lunch</li>
+        </ul>
+      </div>
+      
+      <h3>Who Should Attend</h3>
+      <p>This workshop is perfect for absolute beginners with no prior woodworking experience, DIY enthusiasts looking to improve their skills, homeowners interested in furniture repair and restoration, and anyone curious about the craft of woodworking.</p>
+      
+      <h3>What to Bring</h3>
+      <p>Just bring your enthusiasm and willingness to learn! We provide all tools, materials, and safety equipment. We recommend wearing comfortable clothing that you don't mind getting dusty, and closed-toe shoes for safety.</p>
+    </div>
+    
+    <div class="registration-sidebar animate-on-scroll">
+      <h3>Register Now</h3>
+      <form id="registrationForm">
+        <div class="form-group">
+          <label for="fullName">Full Name</label>
+          <input type="text" id="fullName" class="form-control" placeholder="Enter your full name" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" class="form-control" placeholder="Enter your email" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" class="form-control" placeholder="Enter your phone number" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="experience">Woodworking Experience</label>
+          <select id="experience" class="form-control" required>
+            <option value="">Select your experience level</option>
+            <option value="beginner">Beginner (No experience)</option>
+            <option value="intermediate">Intermediate (Some experience)</option>
+            <option value="advanced">Advanced (Experienced)</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="participants">Number of Participants</label>
+          <select id="participants" class="form-control" required>
+            <option value="1">1 Participant</option>
+            <option value="2">2 Participants</option>
+            <option value="3">3 Participants</option>
+            <option value="4">4 Participants</option>
+          </select>
+        </div>
+        
+        <button type="submit" class="submit-btn">Register for Workshop</button>
+        <p style="text-align: center; margin-top: 1rem; font-size: 0.9rem; color: var(--text-light);">Limited to 12 participants</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<div class="footer animate-on-scroll">
+  <div class="footer-column">
+    <h3>KCC Furnitures</h3>
+    <a href="mailto:kkclaminates@gmail.com">kccfurnitures.com</a>
+    <a href="tel:09778899133">0977 889 9133</a>
+    <p>Benedicto St.,Poblacion West, Oton, Philippines</p>
+     <p>46A Scout Rallos Street, Laging Handa, Diliman, Quezon City, Philippines</p>
+  </div>
+  <div class="footer-column">
+    <h3>Sitemap</h3>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="project.html">Projects</a>
+    <a href="events.html">Events</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <div class="footer-column">
+    <h3>Working Hours</h3>
+    <p>Monday - Saturday: 8am - 5pm</p>
+    <p>Sunday: Closed</p>
+  </div>
+  <div class="footer-column">
+    <h3>Follow Us</h3>
+    <div class="social-icons">
+      <a href="https://www.facebook.com/kcclaminates"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-pinterest"></i></a>
+    </div>
+    <h3 style="margin-top: 20px;">Newsletter</h3>
+    <p>Subscribe for updates and offers</p>
+    <form style="margin-top: 10px;">
+      <input type="email" placeholder="Your email" style="padding: 10px; width: 100%; border: none; border-radius: 5px; margin-bottom: 10px;">
+      <button type="submit" style="background: #fff; color: #1ea840; border: none; padding: 10px 20px; border-radius: 30px; cursor: pointer; width: 100%;">Subscribe</button>
+    </form>
+  </div>
+</div>
+<div class="footer-bottom">
+  &copy; 2025 KCC Furnitures and Hardwares | Philippines
+</div>
+
+<!-- Thank You Page (Hidden by default) -->
+<div id="thankYouPage" class="thank-you-section" style="display: none;">
+  <div class="thank-you-container animate-on-scroll">
+    <div class="thank-you-icon">
+      <i class="fas fa-check-circle"></i>
+    </div>
+    <h1>Thank You for Registering!</h1>
+    <p>Your registration for the <strong>Basic Woodworking Techniques</strong> workshop has been received successfully. We're excited to have you join us on <strong>June 15, 2025</strong> at the <strong>KCC Main Showroom</strong>.</p>
+    <p>You will receive a confirmation email shortly with all the details about the workshop, including what to bring and directions to our location.</p>
+    <p>If you have any questions before the workshop, feel free to contact us at <a href="mailto:kccfurnitures@gmail.com">kccfurnitures@gmail.com</a> or call <a href="tel:09178294272">0917-829-4272</a>.</p>
+    <div class="thank-you-actions">
+      <a href="events.html" class="cta-button">Back to Events</a>
+      <a href="index.html" class="cta-button secondary">Return to Homepage</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Night Mode Toggle
+  const themeToggle = document.getElementById('themeToggle');
+  const body = document.body;
+  
+  // Check for saved theme preference or respect OS preference
+  const savedTheme = localStorage.getItem('theme') || 
+                    (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'night' : 'light');
+  
+  if (savedTheme === 'night') {
+    body.classList.add('night-mode');
+    themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+  }
+  
+  themeToggle.addEventListener('click', () => {
+    body.classList.toggle('night-mode');
+    
+    if (body.classList.contains('night-mode')) {
+      localStorage.setItem('theme', 'night');
+      themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+    } else {
+      localStorage.setItem('theme', 'light');
+      themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+    }
+  });
+  
+  // Mobile Navigation Toggle
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobileNav');
+  const overlay = document.getElementById('overlay');
+  const closeMenu = document.getElementById('closeMenu');
+  
+  hamburger.addEventListener('click', () => {
+    mobileNav.classList.add('active');
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  });
+  
+  closeMenu.addEventListener('click', () => {
+    mobileNav.classList.remove('active');
+    overlay.classList.remove('active');
+    document.body.style.overflow = 'auto';
+  });
+  
+  overlay.addEventListener('click', () => {
+    mobileNav.classList.remove('active');
+    overlay.classList.remove('active');
+    document.body.style.overflow = 'auto';
+  });
+  
+  // Form submission
+  const registrationForm = document.getElementById('registrationForm');
+  const thankYouPage = document.getElementById('thankYouPage');
+  const mainContent = document.querySelector('.event-details-section');
+  const footer = document.querySelector('.footer');
+  const footerBottom = document.querySelector('.footer-bottom');
+  
+  registrationForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    
+    // Hide main content and show thank you page
+    mainContent.style.display = 'none';
+    footer.style.display = 'none';
+    footerBottom.style.display = 'none';
+    thankYouPage.style.display = 'flex';
+    
+    // Scroll to top of thank you page
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+    
+    // Trigger animation for thank you page
+    setTimeout(() => {
+      document.querySelector('.thank-you-container').classList.add('animated');
+    }, 300);
+  });
+  
+  // Header scroll effect
+  window.addEventListener('scroll', () => {
+    const header = document.querySelector('.header');
+    if (window.scrollY > 50) {
+      header.style.boxShadow = '0 5px 20px rgba(0,0,0,0.1)';
+    } else {
+      header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+    }
+  });
+  
+  // Animation for elements when they come into view
+  const animateOnScroll = () => {
+    const elements = document.querySelectorAll('.animate-on-scroll');
+    
+    elements.forEach(element => {
+      const elementPosition = element.getBoundingClientRect().top;
+      const screenPosition = window.innerHeight / 1.3;
+      
+      if (elementPosition < screenPosition) {
+        element.classList.add('animated');
+      }
+    });
+  };
+  
+  window.addEventListener('scroll', animateOnScroll);
+  
+  // Initialize animations
+  window.addEventListener('load', () => {
+    // Trigger initial animations
+    animateOnScroll();
+    
+    // Add slight delay to hero animations for better effect
+    setTimeout(() => {
+      document.querySelector('.hero-content h1').style.animationPlayState = 'running';
+    }, 300);
+    
+    setTimeout(() => {
+      document.querySelector('.hero-content p').style.animationPlayState = 'running';
+    }, 600);
+  });
+</script>
+</body>
+</html>

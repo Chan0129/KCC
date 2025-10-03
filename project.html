@@ -78,6 +78,13 @@ body {
   transform: scale(1.05);
 }
 
+/* Navigation Styles - Right Aligned */
+.nav-links {
+  flex-grow: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
 .nav-links ul {
   display: flex;
   list-style: none;
@@ -117,20 +124,30 @@ body {
   color: var(--primary-color);
 }
 
-/* Theme Toggle */
+/* Night Mode Toggle - Lower Right Corner */
 .theme-toggle {
-  background: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  color: white;
   border: none;
-  color: var(--text-color);
-  font-size: 1.2rem;
   cursor: pointer;
-  margin-left: 1rem;
-  transition: var(--transition);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
 }
 
 .theme-toggle:hover {
-  color: var(--primary-color);
-  transform: rotate(30deg);
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+  background-color: var(--primary-dark);
 }
 
 /* Hamburger Menu */
@@ -722,6 +739,13 @@ body {
   .social-icons {
     justify-content: center;
   }
+  
+  .theme-toggle {
+    width: 45px;
+    height: 45px;
+    bottom: 15px;
+    right: 15px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -774,11 +798,6 @@ body {
     </ul>
   </nav>
   
-  <!-- Theme Toggle -->
-  <button class="theme-toggle" id="themeToggle">
-    <i class="fas fa-moon"></i>
-  </button>
-  
   <!-- Hamburger Menu -->
   <div class="hamburger" id="hamburger">
     <div class="line1"></div>
@@ -786,6 +805,11 @@ body {
     <div class="line3"></div>
   </div>
 </div>
+
+<!-- Night Mode Toggle - Lower Right Corner -->
+<button class="theme-toggle" id="themeToggle">
+  <i class="fas fa-moon"></i>
+</button>
 
 <!-- Mobile Navigation -->
 <div class="mobile-nav" id="mobileNav">
@@ -927,76 +951,24 @@ themeToggle.addEventListener('click', () => {
 // Sample data for 10 images per category
 const imageData = {
   closets: [
-    { title: "Walk-in Closet", desc: "Custom closet organization system", img: "./images/closets/closet-1.jpg" },
-    { title: "Reach-in Closet", desc: "Space-efficient closet solution", img: "./images/closets/closet-2.jpg" },
-    { title: "Built-in Wardrobe", desc: "Seamless integration with room", img: "./images/closets/closet-3.jpg" },
-    { title: "Custom Closet System", desc: "Personalized storage solution", img: "./images/closets/closet-4.jpg" },
-    { title: "Walk-in Closet with Island", desc: "Luxury closet design", img: "./images/closets/closet-5.jpg" },
-    { title: "Corner Closet", desc: "Maximizes corner space", img: "./images/closets/closet-6.jpg" },
-    { title: "Kids Closet", desc: "Fun and functional design", img: "./images/closets/closet-7.jpg" },
-    { title: "Master Bedroom Closet", desc: "Spacious and organized", img: "./images/closets/closet-8.jpg" },
-    { title: "Sliding Door Closet", desc: "Space-saving solution", img: "./images/closets/closet-9.jpg" },
-    { title: "Custom Closet with Lighting", desc: "Enhanced visibility and style", img: "./images/closets/closet-10.jpg" }
+    { title: "Modern Wardobe Cabinet", desc: "Site: Palao Residence", img: "./images/closets/Palao.png" },
+   
   ],
   entertainment: [
-    { title: "Wall-mounted TV Unit", desc: "Sleek entertainment center", img: "./images/entertainment/entertainment-1.jpg" },
-    { title: "Built-in Entertainment Wall", desc: "Complete media solution", img: "./images/entertainment/entertainment-2.jpg" },
-    { title: "Floating Media Console", desc: "Modern minimalist design", img: "./images/entertainment/entertainment-3.jpg" },
-    { title: "Corner Entertainment Unit", desc: "Space-efficient design", img: "./images/entertainment/entertainment-4.jpg" },
-    { title: "Custom Media Wall", desc: "Integrated storage and display", img: "./images/entertainment/entertainment-5.jpg" },
-    { title: "Entertainment Center with Fireplace", desc: "Cozy media space", img: "./images/entertainment/entertainment-6.jpg" },
-    { title: "Gaming Station", desc: "Dedicated gaming setup", img: "./images/entertainment/entertainment-7.jpg" },
-    { title: "Home Theater Cabinetry", desc: "Professional cinema experience", img: "./images/entertainment/entertainment-8.jpg" },
-    { title: "Multi-media Console", desc: "Versatile entertainment hub", img: "./images/entertainment/entertainment-9.jpg" },
-    { title: "Entertainment Wall with Bookshelves", desc: "Combined media and library", img: "./images/entertainment/entertainment-10.jpg" }
   ],
   kitchen: [
     { title: "Wall Mounted Kitchen Cabinet", desc: "Site: Panaderia De Iloilo", img: "./images/kitchen/Panaderia.jpg" },
-    { title: "Modern Kitchen Cabinets", desc: "Sleek and functional design", img: "./images/kitchen/kitchen-2.jpg" },
-    { title: "Custom Kitchen Island", desc: "Additional prep space", img: "./images/kitchen/kitchen-3.jpg" },
-    { title: "Pantry Organization", desc: "Efficient food storage", img: "./images/kitchen/kitchen-4.jpg" },
-    { title: "Pull-out Cabinet Systems", desc: "Easy access storage", img: "./images/kitchen/kitchen-5.jpg" },
-    { title: "Corner Cabinet Solutions", desc: "Maximizes corner space", img: "./images/kitchen/kitchen-6.jpg" },
-    { title: "Spice Rack Integration", desc: "Organized cooking essentials", img: "./images/kitchen/kitchen-7.jpg" },
-    { title: "Custom Drawer Systems", desc: "Tailored kitchen organization", img: "./images/kitchen/kitchen-8.jpg" },
-    { title: "Wine Storage Cabinet", desc: "Elegant wine display", img: "./images/kitchen/kitchen-9.jpg" },
-    { title: "Kitchen Cabinet with Lighting", desc: "Enhanced workspace visibility", img: "./images/kitchen/kitchen-10.jpg" }
   ],
   shelving: [
     { title: "Floating Shelves", desc: "Wall Mounted Shelving", img: "./images/shelving/shelve.jpg" },
-    { title: "Floating Shelves", desc: "Modern minimalist design", img: "./images/projects/shelving/shelving-2.jpg" },
-    { title: "Industrial Shelving", desc: "Durable and stylish", img: "./images/projects/shelving/shelving-3.jpg" },
-    { title: "Corner Shelving Unit", desc: "Maximizes corner space", img: "./images/projects/shelving/shelving-4.jpg" },
-    { title: "Display Shelves", desc: "Showcase your collectibles", img: "./images/projects/shelving/shelving-5.jpg" },
-    { title: "Modular Shelving System", desc: "Customizable to your needs", img: "./images/projects/shelving/shelving-6.jpg" },
-    { title: "Office Shelving", desc: "Organized workspace", img: "./images/projects/shelving/shelving-7.jpg" },
-    { title: "Garage Storage Shelves", desc: "Durable and functional", img: "./images/projects/shelving/shelving-8.jpg" },
-    { title: "Children's Room Shelves", desc: "Fun and accessible", img: "./images/projects/shelving/shelving-9.jpg" },
-    { title: "Custom Bookshelf", desc: "Tailored to your space", img: "./images/projects/shelving/shelving-10.jpg" }
   ],
   storage: [
     { title: "Luxury Bathroom Storage", desc: "Premium vanity solutions", img: "./images/storage/cabinet.jpg" },
     { title: "Side Cabinet Unit", desc: "Creative space utilization", img: "./images/storage/side cabinet unit.jpg" },
     { title: "Custom Pedestal Storage", desc: "Organize your files", img:  "./images/storage/pedestal01.jpg"  },
-    { title: "Built-in Storage Bench", desc: "Seating with storage", img: "./images/projects/storage/storage-4.jpg" },
-    { title: "Mudroom Storage", desc: "Organized entryway", img: "./images/projects/storage/storage-5.jpg" },
-    { title: "Laundry Room Storage", desc: "Efficient organization", img: "./images/projects/storage/storage-6.jpg" },
-    { title: "Closet Storage System", desc: "Maximized organization", img: "./images/projects/storage/storage-7.jpg" },
-    { title: "Pantry Organization", desc: "Efficient food storage", img: "./images/projects/storage/storage-8.jpg" },
-    { title: "Office Storage Solutions", desc: "Organized workspace", img: "./images/projects/storage/storage-9.jpg" },
-    { title: "Toy Storage System", desc: "Keep play areas tidy", img: "./images/projects/storage/storage-10.jpg" }
   ],
   vanity: [
-    { title: "Double Vanity Unit", desc: "Spacious bathroom storage", img: "./images/vanity/vanity-1.jpg" },
-    { title: "Floating Bathroom Vanity", desc: "Modern minimalist design", img: "./images/vanity/vanity-2.jpg" },
-    { title: "Custom Vanity with Storage", desc: "Tailored bathroom solution", img: "./images/vanity/vanity-3.jpg" },
-    { title: "Wall-mounted Vanity", desc: "Space-saving design", img: "./images/vanity/vanity-4.jpg" },
-    { title: "Vanity with Integrated Sink", desc: "Seamless bathroom design", img: "./images/vanity/vanity-5.jpg" },
-    { title: "Corner Vanity Unit", desc: "Maximizes corner space", img: "./images/vanity/vanity-6.jpg" },
-    { title: "Vanity with Mirror Cabinet", desc: "Complete bathroom storage", img: "./images/vanity/vanity-7.jpg" },
-    { title: "Custom Vanity with Lighting", desc: "Enhanced bathroom illumination", img: "./images/vanity/vanity-8.jpg" },
-    { title: "Vanity with Drawer Organization", desc: "Efficient storage solution", img: "./images/vanity/vanity-9.jpg" },
-    { title: "Luxury Bathroom Vanity", desc: "Premium bathroom design", img: "./images/vanity/vanity-10.jpg" }
+    
   ],
   hardwares: [
     { title: "Ordinary Big Hinge", desc: "Durable and stylish hardware", img: "./images/hardwares/ordinary big hinge.jpg" },
@@ -1005,34 +977,16 @@ const imageData = {
     { title: "Soft Close Half Overlay", desc: "Water-resistant hardware", img: "./images/hardwares/soft close half overlay.jpg" },
     { title: "Soft Close Inset Hinge", desc: "Functional and decorative", img: "./images/hardwares/soft close inset hinge.jpg" },
     { title: "Special Hinge", desc: "Smooth operation mechanisms", img: "./images/hardwares/special hinge.jpg" },
-    { title: "Cabinet Handles", desc: "Elegant finishing touches", img: "./images/hardwares/hardware-7.jpg" },
-    { title: "Drawer Slides", desc: "Smooth drawer operation", img: "./images/hardwares/hardware-8.jpg" },
-    { title: "Door Knobs", desc: "Stylish entry solutions", img: "./images/hardwares/hardware-9.jpg" },
-    { title: "Custom Hardware Set", desc: "Complete hardware package", img: "./images/hardwares/hardware-10.jpg" }
   ],
   "operable-walls": [
     { title: "Modern Operable Wall", desc: "Flexible space division", img: "./images/operable walls/operable wall-1.jpg" },
     { title: "Acoustic Operable Wall", desc: "Soundproof partitioning", img: "./images/operable walls/operable wall-2.jpg"  },
     { title: "Glass Operable Wall", desc: "Transparent space division", img: "./images/operable walls/operable wall-3.jpg"  },
     { title: "Custom Operable Wall", desc: "Tailored to your space", img: "./images/operable walls/operable wall-4.jpg"  },
-    { title: "Office Partition Wall", desc: "Professional space management", img: "./images/operable-walls/operable-5.jpg" },
-    { title: "Retractable Wall System", desc: "Easy space reconfiguration", img: "./images/operable-walls/operable-6.jpg" },
-    { title: "Operable Wall with Doors", desc: "Integrated access points", img: "./images/operable-walls/operable-7.jpg" },
-    { title: "Panel Operable Wall", desc: "Modular wall system", img: "./images/operable-walls/operable-8.jpg" },
-    { title: "Commercial Operable Wall", desc: "Large venue solutions", img: "./images/operable-walls/operable-9.jpg" },
-    { title: "Residential Operable Wall", desc: "Home space optimization", img: "./images/operable-walls/operable-10.jpg" }
   ],
   "acoustic-door": [
     { title: "Premium Acoustic Door", desc: "Maximum sound insulation", img: "./images/acoustic door/acoustic door.jpg" },
-    { title: "Studio Acoustic Door", desc: "Professional soundproofing", img: "./images/acoustic-door/acoustic-2.jpg" },
-    { title: "Double Acoustic Doors", desc: "Enhanced noise reduction", img: "./images/acoustic-door/acoustic-3.jpg" },
-    { title: "Fire-Rated Acoustic Door", desc: "Safety and sound control", img: "./images/acoustic-door/acoustic-4.jpg" },
-    { title: "Custom Acoustic Door", desc: "Tailored sound solutions", img: "./images/acoustic-door/acoustic-5.jpg" },
-    { title: "Glass Acoustic Door", desc: "Visibility with sound control", img: "./images/acoustic-door/acoustic-6.jpg" },
-    { title: "Office Acoustic Door", desc: "Professional environment", img: "./images/acoustic-door/acoustic-7.jpg" },
-    { title: "Residential Acoustic Door", desc: "Home tranquility", img: "./images/acoustic-door/acoustic-8.jpg" },
-    { title: "Industrial Acoustic Door", desc: "Heavy-duty soundproofing", img: "./images/acoustic-door/acoustic-9.jpg" },
-    { title: "Sliding Acoustic Door", desc: "Space-saving sound control", img: "./images/acoustic-door/acoustic-10.jpg" }
+
   ]
 };
 
